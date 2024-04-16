@@ -1,0 +1,20 @@
+public class Monster {
+    protected String species = "Default species";
+
+    public Monster(String species) {
+        if (species != null) { this.species = species;}
+    }
+
+    public String getSpecies() {
+        return this.species;
+    }
+
+    public String toString() {
+        return "This monster is a" + this.species;
+    }
+
+    public void killPlayer() {
+        system.out.println(this.species + "has just killed you! Game over!");
+        //Some sort of quit game function must be inserted (i.e. stop running java)
+    }
+}
