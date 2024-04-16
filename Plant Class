@@ -1,0 +1,15 @@
+public class Plant {
+    protected String species = "Default species";
+
+    public Plant(String species) {
+        if (species != null) { this.species = species;}
+    }
+
+    public String getSpecies() {
+        return this.species;
+    }
+
+    public String toString() {
+        return "This plant is a" + this.species;
+    }
+}
