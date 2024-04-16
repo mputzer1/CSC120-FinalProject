@@ -1,0 +1,9 @@
+public class Desert extends Biome {
+    ///Animal type
+    //Plant type
+    //Monster
+
+    public Desert() {
+        super(biome);
+    }
+}

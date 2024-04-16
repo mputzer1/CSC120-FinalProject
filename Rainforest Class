@@ -1,0 +1,9 @@
+public class Rainforest extends Biome {
+    ///Animal type
+    //Plant type
+    //Monster
+
+    public Rainforest() {
+        super(biome);
+    }
+}
