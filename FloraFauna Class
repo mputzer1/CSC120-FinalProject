@@ -12,4 +12,8 @@ public class FloraFauna {
     public String toString() {
         return "This creature is a" + this.species;
     }
+
+    public String speak() {
+        return "Heyyyyyy, help me out!"
+    }
 }
