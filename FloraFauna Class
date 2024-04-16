@@ -1,7 +1,7 @@
-public class Plant {
+public class FloraFauna {
     protected String species = "Default species";
 
-    public Plant(String species) {
+    public FloraFauna(String species) {
         if (species != null) { this.species = species;}
     }
 
@@ -10,6 +10,6 @@ public class Plant {
     }
 
     public String toString() {
-        return "This plant is a" + this.species;
+        return "This creature is a" + this.species;
     }
 }
