@@ -1,9 +1,12 @@
 public class Desert extends Biome {
-    ///Animal type
-    //Plant type
-    //Monster
+    private FloraFauna camel;
+    private FloraFauna cactus;
+    private Monster basilisk;
 
-    public Desert() {
+    public Desert(FloraFauna camel, FloraFauna cactus, Monster basilisk) {
         super(biome);
+        this.camel = new FloraFauna("camel");
+        this.cactus = new FloraFauna("cactus");
+        this.basilisk = new Monster("basilisk");
     }
 }
