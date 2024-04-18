@@ -14,7 +14,7 @@ public class Monster {
     }
 
     public void killPlayer() {
-        system.out.println(this.species + "has just killed you! Game over!");
+        System.out.println(this.species + "has just killed you! Game over!");
         //Some sort of quit game function must be inserted (i.e. stop running java)
     }
 }

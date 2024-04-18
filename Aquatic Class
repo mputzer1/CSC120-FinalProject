@@ -1,9 +1,0 @@
-public class Aquatic extends Biome {
-    ///Animal type
-    //Plant type
-    //Monster
-
-    public Aquatic() {
-        super(biome);
-    }
-}
