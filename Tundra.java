@@ -1,9 +1,9 @@
-public class Aquatic extends Biome {
+public class Tundra extends Biome {
     ///Animal type
     //Plant type
     //Monster
 
-    public Aquatic() {
+    public Tundra(String biome) {
         super(biome);
     }
 }

@@ -16,10 +16,10 @@ public class FloraFauna {
     }
 
     public String speak() {
-        return "Heyyyyyy, help me out!"
+        return "Heyyyyyy, help me out!";
     }
 
-    //public String riddle() {
-        //return this.riddle;
-    //}
+    public void riddle() {
+        System.out.println("Default riddle");
+    }
 }
