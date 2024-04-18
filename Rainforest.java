@@ -12,7 +12,9 @@ public class Rainforest extends Biome {
 
     public void welcome() {
         //Reads welcome message
+        //or send to file class and have specific lines
     }
+
 
     public void riddle() {
         //riddle

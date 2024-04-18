@@ -12,6 +12,7 @@ public class Desert extends Biome {
 
     public void welcome() {
         //Reads welcome message
+        //Or send to file class and have specific lines read
     }
 
     public void riddle() {
