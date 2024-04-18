@@ -10,15 +10,14 @@ public class Rainforest extends Biome {
         this.croczilla = new Monster("croczilla");
     }
 
-    //Have rainforest file that reads certain description when called here from the rainforest
-
-    public void start() {
-        //Read file (maybe same file for all the riddles, but read specific lines, avoid creating 478478 files)
+    public void welcome() {
+        //Reads welcome message
     }
 
-
-    public void river() {
-        //Read file
+    public void riddle() {
+        //riddle
+        //Read file (maybe same file for all the riddles, but read specific lines, avoid creating 478478 files)
+        //User answers one riddle then another riddle for second animal(3 attempts per riddle)
     }
 
 }

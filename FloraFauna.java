@@ -18,8 +18,4 @@ public class FloraFauna {
     public String speak() {
         return "Heyyyyyy, help me out!";
     }
-
-    public void riddle() {
-        System.out.println("Default riddle");
-    }
 }
