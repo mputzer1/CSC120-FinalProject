@@ -23,4 +23,6 @@ public class Biome {
         //User answers one riddle then another riddle for second animal(3 attempts per riddle)
     }
 
+    //Look at labels for edges
+    //Use value graph
 }
