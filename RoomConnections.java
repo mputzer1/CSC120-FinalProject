@@ -1,19 +1,21 @@
-import com.google.common.graph.*;
+import com.google.common.graph.ImmutableValueGraph;
+import com.google.common.graph.ValueGraphBuilder;
 
 public class RoomConnections {
   public static void main(String[] args) {
 
     // Example ImmutableGraph with Strings as Node data
-    ImmutableGraph<String> myGraph = GraphBuilder.undirected()
-      .<String>immutable()
-      .putEdge("Rainforest", "Aquatic")
-      .putEdge("Rainforest", "Desert")
-      .putEdge("Rainforest", "Lab")
-      .putEdge("Aquatic", "Tundra")
-      .putEdge("Aquatic","Lab")
-      .putEdge("Desert","Tundra")
-      .putEdge("Desert", "Lab")
-      .putEdge("Tundra", "Lab")
+    ImmutableValueGraph<String, String> myGraph = ValueGraphBuilder.undirected()
+      .<String, String>immutable()
+      .putEdgeValue("Rainforest", "Aquatic", "East")
+      .putEdgeValue("Aquatic", "Rainforest", "West")
+      .putEdgeValue("Rainforest", "Desert", "South")
+      .putEdgeValue("Rainforest", "Lab", "Lab")
+      // .putEdge("Aquatic", "Tundra")
+      // .putEdge("Aquatic","Lab")
+      // .putEdge("Desert","Tundra")
+      // .putEdge("Desert", "Lab")
+      // .putEdge("Tundra", "Lab")
       .build();
 
     System.out.println(myGraph);
