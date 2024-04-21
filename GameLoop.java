@@ -7,6 +7,8 @@ public class GameLoop {
         // This is a "flag" to let us know when the loop should end
         boolean stillPlaying = true;
 
+        String userLocation = "Lab";
+
         // We'll use this to get input from the user.
         Scanner userInput = new Scanner(System.in);
 
@@ -33,20 +35,25 @@ public class GameLoop {
             // ***********************************************************************
             // And as the player interacts, you'll check to see if the game should end
             //  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓
-            if (userResponse.equals("NORTH") || userResponse.equals("WEST") || userResponse.equals("EAST") || userResponse.equals("SOUTH")) {
-                stillPlaying = false;
+            if (
+                
+            userResponse.equals("NORTH")) {
+                
+                //stillPlaying = false;
             }
+
+
         } while (stillPlaying);
 
         // Tidy up
         userInput.close();
 
         // Once you exit the loop, you may need to deal with various possible stopping conditions
-        if (userResponse.equals("WIN")) {
-            System.out.println("Yay, you won!");
-        } else { // userResponse.equals("LOSE")
-            System.out.println("Better luck next time.");
-        }
+        // if (userLocation.equals("Lab") && userResponse.equals("North")) {
+        //     System.out.println("Yay, you won!");
+        // } else { // userResponse.equals("LOSE")
+        //     System.out.println("Better luck next time.");
+        // }
 
     }
 
