@@ -40,11 +40,8 @@ public class GameLoop { //Maybe have a class w/ help commands?
 
         // The do...while structure means we execute the body of the loop once before checking the stopping condition
         do {
-            // ************************************************
-            // The stuff that happens in your game will go here
-            //  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓
+
             //Checks user location
-            
             System.out.println("\nThe following paths you may take are listed below:");
             Iterator<EndpointPair<String>> GraphIterator = Graph.incidentEdges(userLocation).iterator();
             while (GraphIterator.hasNext()) {
@@ -90,11 +87,13 @@ public class GameLoop { //Maybe have a class w/ help commands?
                 FloraFauna poison_dart_frog = rainforest.frogriddle(userInput);
                 if (poison_dart_frog == null) {
                     userLocation = "lab";
+                    inventory.clear();
                 } else {
                     inventory.add(poison_dart_frog);
                     FloraFauna cacao = rainforest.cacaoriddle(userInput);
                     if (cacao == null) {
                         userLocation = "lab";
+                        inventory.clear();
                     } else {
                         inventory.add(cacao);
                     }
@@ -125,13 +124,16 @@ public class GameLoop { //Maybe have a class w/ help commands?
                     System.out.println("\n==============");
                     System.out.println("YOUR INVENTORY");
                     System.out.println("==============");
-                    for (int i = 0; i < inventory.size(); i++) {
-                        System.out.println(inventory.get(i));
+                    if (inventory.isEmpty()) {
+                        System.out.println("Your inventory is empty.");
+                    } else {
+                        for (int i = 0; i < inventory.size(); i++) {
+                            System.out.println(inventory.get(i));
+                        }
                     }
                 } else {
                    System.out.println("\nThe game continues!"); 
                 }
-                //User can check inventory here
             }
 
                 //stillPlaying = false;
