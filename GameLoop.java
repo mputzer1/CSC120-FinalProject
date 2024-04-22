@@ -19,7 +19,7 @@ public class GameLoop {
         Desert desert = new Desert();
         Aquatic aquatic = new Aquatic();
         Tundra tundra = new Tundra();
-        ArrayList<String> inventory = new ArrayList<>();
+        ArrayList<FloraFauna> inventory = new ArrayList<>();
 
         // This is a "flag" to let us know when the loop should end
         boolean stillPlaying = true;
@@ -36,7 +36,7 @@ public class GameLoop {
         System.out.println("******************");
         System.out.println("\nInsert instructions for game + intro");
         System.out.println("\nEnter your username:");
-        String username = userInput.nextLine().toLowerCase(); //Check for invalid and store
+        String username = userInput.nextLine().toLowerCase(); //Check for invalid and store in file possibly
 
         // The do...while structure means we execute the body of the loop once before checking the stopping condition
         do {
@@ -90,7 +90,8 @@ public class GameLoop {
                 }
                 if (userLocation.equals("rainforest")) {
                     rainforest.welcome();
-                    rainforest.riddle();
+                    FloraFauna poison_dart_frog = rainforest.frogriddle();
+                    inventory.add(poison_dart_frog);
                 }
                 if (userLocation.equals("desert")) {
                     desert.welcome();
