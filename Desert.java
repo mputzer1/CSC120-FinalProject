@@ -1,10 +1,9 @@
-public class Desert extends Biome {
+public class Desert {
     private FloraFauna camel;
     private FloraFauna cactus;
     private Monster sharknado;
 
-    public Desert(String biome, FloraFauna camel, FloraFauna cactus, Monster sharknado) {
-        super(biome);
+    public Desert() {
         this.camel = new FloraFauna("camel");
         this.cactus = new FloraFauna("cactus");
         this.sharknado = new Monster("sharknado");
