@@ -20,6 +20,11 @@ public class GameLoop { //Maybe have a class w/ help commands?
         Aquatic aquatic = new Aquatic();
         Tundra tundra = new Tundra();
         ArrayList<FloraFauna> inventory = new ArrayList<>();
+        boolean hasFrog = false;
+        boolean hasCacao = false;
+        boolean hasCamel = false;
+        boolean hasCactus = false;
+        //add other had animals
 
         // This is a "flag" to let us know when the loop should end
         boolean stillPlaying = true;
@@ -83,35 +88,70 @@ public class GameLoop { //Maybe have a class w/ help commands?
                 }
 
             if (userLocation.equals("rainforest")) {
-                rainforest.welcome();
-                FloraFauna poison_dart_frog = rainforest.frogriddle(userInput);
-                if (poison_dart_frog == null) {
-                    userLocation = "lab";
-                    inventory.clear();
-                } else {
-                    inventory.add(poison_dart_frog);
+                rainforest.welcome(); //Make it so user can't go back to forest after collecting objects!
+                if (hasFrog == false) {
+                    FloraFauna poison_dart_frog = rainforest.frogriddle(userInput);
+                    if (poison_dart_frog == null) {
+                        userLocation = "lab";
+                        inventory.clear();
+                        hasFrog = false;
+                        hasCacao = false;
+                    } else {
+                        inventory.add(poison_dart_frog);
+                        hasFrog = true;
+                    }  
+                if (inventory.contains(poison_dart_frog) && hasCacao == false) {
                     FloraFauna cacao = rainforest.cacaoriddle(userInput);
                     if (cacao == null) {
                         userLocation = "lab";
                         inventory.clear();
+                        hasFrog = false;
+                        hasCacao = false;
                     } else {
                         inventory.add(cacao);
+                        hasCacao = true;
                     }
                 }
+                } else {
+                    System.out.println("No more creatures to find here!");
+                }
             }
-            if (userLocation.equals("desert")) {
+
+
+            if (userLocation.equals("desert")) { //Complete edits to look like rainforest
                 desert.welcome();
-                desert.riddle();
+                FloraFauna camel = desert.camelriddle(userInput);
+                if (camel == null) {
+                    userLocation = "lab";
+                    inventory.clear();
+                } else {
+                    inventory.add(camel);
+                    FloraFauna cactus = desert.cactusriddle(userInput);
+                    if (cactus == null) {
+                        userLocation = "lab";
+                        inventory.clear();
+                    } else {
+                        inventory.add(cactus);
+                    }
+                }
             } 
+
+
             if (userLocation.equals("aquatic")) {
                 //Fill with aquatic
                 aquatic.welcome();
                 aquatic.riddle();
             }
+
+
+
             if (userLocation.equals("tundra")) {
                 tundra.welcome();
                 tundra.riddle();
             }
+
+
+
             if (userLocation.equals("lab")) {
                 //Move the commands below to the lab class
                 System.out.println("\nYou are back to the lab. Would you like to check your inventory?");

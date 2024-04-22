@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Desert {
     private FloraFauna camel;
     private FloraFauna cactus;
@@ -14,10 +16,50 @@ public class Desert {
         //Or send to file class and have specific lines read
     }
 
-    public void riddle() {
-        //riddle
-        //Read file (maybe same file for all the riddles, but read specific lines, avoid creating 478478 files)
-        //User answers one riddle then another riddle for second animal(3 attempts per riddle)
+    public FloraFauna camelriddle(Scanner s) { //Is there a way to consoliate this into one class (biome) or must it be separate b/c different things printed?
+        System.out.println("\nIt's looking a little bold, like camel.");
+        String userResponse = "";
+        int incorrectCounter = 0;
+        while (true) {
+            System.out.println("\nEnter your answer:");
+            userResponse = s.nextLine().toLowerCase();
+            if (!userResponse.equals("camel")) {
+                System.out.println("\nYou've answered incorrectly!");
+                incorrectCounter += 1;
+                System.out.println("The sharknado is " + (3 - incorrectCounter) + " step(s) away.");
+                if (incorrectCounter == 3) {
+                    System.out.println("\nYou've been eaten!");
+                    return null;
+                }
+            }
+            if (userResponse.equals("camel")) {
+                System.out.println("\nYou've answered correctly! The camel has been added to your inventory.");
+                return this.camel;
+            }
+        }
+    }
+
+    public FloraFauna cactusriddle(Scanner s) {
+        System.out.println("\nIt's looking a little bit like cactus...");
+        String userResponse = "";
+        int incorrectCounter = 0;
+        while (true) {
+            System.out.println("\nEnter your answer:");
+            userResponse = s.nextLine().toLowerCase();
+            if (!userResponse.equals("cactus")) {
+                System.out.println("\nYou've answered incorrectly!");
+                incorrectCounter += 1;
+                System.out.println("The sharknado is " + (3 - incorrectCounter) + " step(s) away.");
+                if (incorrectCounter == 3) {
+                    System.out.println("\nYou've been eaten!");
+                    return null;
+                }
+            }
+            if (userResponse.equals("cactus")) {
+                System.out.println("\nYou've answered correctly! The cactus has been added to your inventory.");
+                return this.cactus;
+            }
+        }
     }
 
 }
