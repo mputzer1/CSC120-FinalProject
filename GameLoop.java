@@ -114,7 +114,7 @@ public class GameLoop { //Maybe have a class w/ help commands?
                 tundra.riddle();
             }
             if (userLocation.equals("lab")) {
-                //Fill in with commands
+                //Move the commands below to the lab class
                 System.out.println("\nYou are back to the lab. Would you like to check your inventory?");
                 userResponse = userInput.nextLine().toLowerCase();
                 while (!userResponse.equals("yes") && !userResponse.equals("no")) {
@@ -122,6 +122,9 @@ public class GameLoop { //Maybe have a class w/ help commands?
                     userResponse = userInput.nextLine().toLowerCase();
                 }
                 if (userResponse.equals("yes")) {
+                    System.out.println("\n==============");
+                    System.out.println("YOUR INVENTORY");
+                    System.out.println("==============");
                     for (int i = 0; i < inventory.size(); i++) {
                         System.out.println(inventory.get(i));
                     }

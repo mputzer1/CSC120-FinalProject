@@ -61,7 +61,7 @@ public class Rainforest {
             }
             if (userResponse.equals("cacao")) {
                 System.out.println("\nYou've answered correctly! The cacao has been added to your inventory.");
-                return this.poison_dart_frog;
+                return this.cacao;
             }
         }
 
