@@ -4,8 +4,8 @@ public class Tundra {
     private Monster yeti;
 
     public Tundra() {
-        this.arctic_fox = new FloraFauna("arctic fox"); 
-        this.fern = new FloraFauna("fern");
+        this.arctic_fox = new FloraFauna("arctic fox", 6, "Gary"); 
+        this.fern = new FloraFauna("fern", 5, "finn");
         this.yeti = new Monster("yeti");
     }
 

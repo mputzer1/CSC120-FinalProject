@@ -4,8 +4,8 @@ public class Aquatic {
     private Monster kraken;
 
     public Aquatic() {
-        this.dolphin = new FloraFauna("dolphin"); 
-        this.sea_anemone = new FloraFauna("sea anemone");
+        this.dolphin = new FloraFauna("dolphin", 4, "Dorothy"); 
+        this.sea_anemone = new FloraFauna("sea anemone", 5, "Flounder");
         this.kraken = new Monster("kraken");
     }
 

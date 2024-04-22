@@ -5,7 +5,7 @@ import java.util.Scanner;
 import com.google.common.graph.EndpointPair;
 import com.google.common.graph.ImmutableValueGraph;
 
-public class GameLoop {
+public class GameLoop { //Maybe have a class w/ help commands?
     public static void main(String[] args) {
         
         //Attributes
@@ -34,7 +34,7 @@ public class GameLoop {
         System.out.println("******************");
         System.out.println("WELCOME TO OUR ANIMAL GAME");
         System.out.println("******************");
-        System.out.println("\nInsert instructions for game + intro");
+        System.out.println("\nInsert instructions for game + intro. You are in a dim room...lab ");
         System.out.println("\nEnter your username:");
         String username = userInput.nextLine().toLowerCase(); //Check for invalid and store in file possibly
 
@@ -43,6 +43,8 @@ public class GameLoop {
             // ************************************************
             // The stuff that happens in your game will go here
             //  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓
+            //Checks user location
+            
             System.out.println("\nThe following paths you may take are listed below:");
             Iterator<EndpointPair<String>> GraphIterator = Graph.incidentEdges(userLocation).iterator();
             while (GraphIterator.hasNext()) {
@@ -66,8 +68,8 @@ public class GameLoop {
                 //Choose a path
                 System.out.println("\nChoose a path:");
                 userResponse = userInput.nextLine().toLowerCase();
-                if (!edgeArrayList.contains(userResponse)) {
-                  System.out.println("Invalid answer. Type new response.");
+                while (!edgeArrayList.contains(userResponse)) {
+                  System.out.println("Invalid answer. Type new response."); //Class for help commands/inventory check?
                   userResponse = userInput.nextLine().toLowerCase();
                 }
                 for (int i=0; i < sourceArrayList.size(); i++) {
@@ -83,29 +85,51 @@ public class GameLoop {
                   }
                 }
 
-                //Checks user location
-                if (userLocation.equals("lab")) {
-                    //Fill in with commands
-                    System.out.println("Filler for lab");
-                }
-                if (userLocation.equals("rainforest")) {
-                    rainforest.welcome();
-                    FloraFauna poison_dart_frog = rainforest.frogriddle();
+            if (userLocation.equals("rainforest")) {
+                rainforest.welcome();
+                FloraFauna poison_dart_frog = rainforest.frogriddle(userInput);
+                if (poison_dart_frog == null) {
+                    userLocation = "lab";
+                } else {
                     inventory.add(poison_dart_frog);
+                    FloraFauna cacao = rainforest.cacaoriddle(userInput);
+                    if (cacao == null) {
+                        userLocation = "lab";
+                    } else {
+                        inventory.add(cacao);
+                    }
                 }
-                if (userLocation.equals("desert")) {
-                    desert.welcome();
-                    desert.riddle();
-                } 
-                if (userLocation.equals("aquatic")) {
-                    //Fill with aquatic
-                    aquatic.welcome();
-                    aquatic.riddle();
+            }
+            if (userLocation.equals("desert")) {
+                desert.welcome();
+                desert.riddle();
+            } 
+            if (userLocation.equals("aquatic")) {
+                //Fill with aquatic
+                aquatic.welcome();
+                aquatic.riddle();
+            }
+            if (userLocation.equals("tundra")) {
+                tundra.welcome();
+                tundra.riddle();
+            }
+            if (userLocation.equals("lab")) {
+                //Fill in with commands
+                System.out.println("\nYou are back to the lab. Would you like to check your inventory?");
+                userResponse = userInput.nextLine().toLowerCase();
+                while (!userResponse.equals("yes") && !userResponse.equals("no")) {
+                    System.out.println("\nI don't recognize " + "'" + userResponse +"'");
+                    userResponse = userInput.nextLine().toLowerCase();
                 }
-                if (userLocation.equals("tundra")) {
-                    tundra.welcome();
-                    tundra.riddle();
+                if (userResponse.equals("yes")) {
+                    for (int i = 0; i < inventory.size(); i++) {
+                        System.out.println(inventory.get(i));
+                    }
+                } else {
+                   System.out.println("\nThe game continues!"); 
                 }
+                //User can check inventory here
+            }
 
                 //stillPlaying = false;
 

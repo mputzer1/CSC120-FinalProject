@@ -4,8 +4,8 @@ public class Desert {
     private Monster sharknado;
 
     public Desert() {
-        this.camel = new FloraFauna("camel");
-        this.cactus = new FloraFauna("cactus");
+        this.camel = new FloraFauna("camel", 2, "Tom");
+        this.cactus = new FloraFauna("cactus", 3, "Janice");
         this.sharknado = new Monster("sharknado");
     }
 
