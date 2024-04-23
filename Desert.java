@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Desert {
+public class Desert extends Biome {
     private FloraFauna camel;
     private FloraFauna cactus;
     private Monster sharknado;

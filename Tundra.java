@@ -1,4 +1,4 @@
-public class Tundra {
+public class Tundra extends Biome {
     private FloraFauna arctic_fox;
     private FloraFauna fern;
     private Monster yeti;
@@ -14,7 +14,7 @@ public class Tundra {
         //Reads welcome message
     }
 
-    public void riddle() {
+    public void tundrariddle() {
         System.out.println("Tundra Riddle!");
         //riddle
         //Read file (maybe same file for all the riddles, but read specific lines, avoid creating 478478 files)

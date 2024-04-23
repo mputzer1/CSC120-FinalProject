@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -88,8 +89,8 @@ public class GameLoop { //Maybe have a class w/ help commands?
                 }
 
             if (userLocation.equals("rainforest")) {
-                rainforest.welcome(); //Make it so user can't go back to forest after collecting objects!
                 if (hasFrog == false) {
+                    rainforest.welcome();
                     FloraFauna poison_dart_frog = rainforest.frogriddle(userInput);
                     if (poison_dart_frog == null) {
                         userLocation = "lab";
@@ -113,41 +114,41 @@ public class GameLoop { //Maybe have a class w/ help commands?
                     }
                 }
                 } else {
-                    System.out.println("No more creatures to find here!");
+                    System.out.println("No more creatures to find in the rainforest!");
                 }
             }
 
 
             if (userLocation.equals("desert")) { //Complete edits to look like rainforest
                 desert.welcome();
-                FloraFauna camel = desert.camelriddle(userInput);
-                if (camel == null) {
-                    userLocation = "lab";
-                    inventory.clear();
-                } else {
-                    inventory.add(camel);
-                    FloraFauna cactus = desert.cactusriddle(userInput);
-                    if (cactus == null) {
-                        userLocation = "lab";
-                        inventory.clear();
-                    } else {
-                        inventory.add(cactus);
-                    }
-                }
+                // FloraFauna camel = desert.camelriddle(userInput);
+                // if (camel == null) {
+                //     userLocation = "lab";
+                //     inventory.clear();
+                // } else {
+                //     inventory.add(camel);
+                //     FloraFauna cactus = desert.cactusriddle(userInput);
+                //     if (cactus == null) {
+                //         userLocation = "lab";
+                //         inventory.clear();
+                //     } else {
+                //         inventory.add(cactus);
+                //     }
+                // }
             } 
 
 
             if (userLocation.equals("aquatic")) {
                 //Fill with aquatic
                 aquatic.welcome();
-                aquatic.riddle();
+                aquatic.aquaticriddle();
             }
 
 
 
             if (userLocation.equals("tundra")) {
                 tundra.welcome();
-                tundra.riddle();
+                tundra.tundrariddle();
             }
 
 

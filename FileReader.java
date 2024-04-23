@@ -5,13 +5,11 @@ import java.io.IOException;
 import java.util.Scanner; // Import the Scanner class to read text files
 import java.io.BufferedWriter; // Import this class to write to a file
 
-public class FileDemo {
-  public static void main(String[] args) {
-    System.out.println("***************************************");
-    System.out.println("Learning goals for CSC120 (Spring 2024)");
-    System.out.println("***************************************");
+public class FileReader {
+
+  public void RiddleReader(String filename) {
     try {
-      File myFile = new File("CSC120-LGs.txt");
+      File myFile = new File(filename);
       Scanner fileReader = new Scanner(myFile); // <- Same kind of object we used to read from the command line! But instead of System.in, we're reading from the file
 
       // Loop until we run out of lines
@@ -27,15 +25,17 @@ public class FileDemo {
       System.out.println("An error occurred.");
       e.printStackTrace();
     }
-
-    // Writing to files
-    try {
-      BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt")); // Careful! This will overwrite any previous contents
-      writer.write("Tada! We wrote to a file!");
-      writer.close();
-    } catch (IOException e) {
-      System.out.println(e); // print error message
-    }
-
   }
 }
+
+//     // Writing to files
+//     try {
+//       BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt")); // Careful! This will overwrite any previous contents
+//       writer.write("Tada! We wrote to a file!");
+//       writer.close();
+//     } catch (IOException e) {
+//       System.out.println(e); // print error message
+//     }
+
+//   }
+// }

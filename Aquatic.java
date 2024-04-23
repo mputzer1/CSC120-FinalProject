@@ -1,4 +1,4 @@
-public class Aquatic {
+public class Aquatic extends Biome {
     private FloraFauna dolphin;
     private FloraFauna sea_anemone;
     private Monster kraken;
@@ -14,7 +14,7 @@ public class Aquatic {
         //Reads welcome message
     }
 
-    public void riddle() {
+    public void aquaticriddle() {
         System.out.println("Aquatic riddle");
         //riddle
         //Read file (maybe same file for all the riddles, but read specific lines, avoid creating 478478 files)
