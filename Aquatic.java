@@ -3,12 +3,10 @@ import java.util.Scanner;
 public class Aquatic extends Biome {
     private FloraFauna dolphin;
     private FloraFauna sea_anemone;
-    private Monster kraken;
 
     public Aquatic() {
         this.dolphin = new FloraFauna("dolphin", 4, "Dorothy"); 
         this.sea_anemone = new FloraFauna("sea anemone", 5, "Flounder");
-        this.kraken = new Monster("kraken");
     }
 
     public FloraFauna getDolphin() {

@@ -3,12 +3,10 @@ import java.util.Scanner;
 public class Tundra extends Biome {
     private FloraFauna arctic_fox;
     private FloraFauna fern;
-    private Monster yeti;
 
     public Tundra() {
         this.arctic_fox = new FloraFauna("arctic fox", 6, "Gary"); 
         this.fern = new FloraFauna("fern", 5, "finn");
-        this.yeti = new Monster("yeti");
     }
 
     public FloraFauna getFox() {

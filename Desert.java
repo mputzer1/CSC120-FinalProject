@@ -3,12 +3,10 @@ import java.util.Scanner;
 public class Desert extends Biome {
     private FloraFauna camel;
     private FloraFauna cactus;
-    private Monster sharknado;
 
     public Desert() {
         this.camel = new FloraFauna("camel", 2, "Tom");
         this.cactus = new FloraFauna("cactus", 3, "Janice");
-        this.sharknado = new Monster("sharknado");
     }
 
     public FloraFauna getCamel() {

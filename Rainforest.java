@@ -1,14 +1,12 @@
 import java.util.Scanner;
 
 public class Rainforest extends Biome {
-    private FloraFauna poison_dart_frog; //Would it be better to just create a string for poison dart frog? //Should we have important info about posion dart frog that user can read?
+    private FloraFauna poison_dart_frog; 
     private FloraFauna cacao;
-    //private Monster croczilla; //Is this really necessary?
 
     public Rainforest() {
         this.poison_dart_frog = new FloraFauna("poison dart frog", 3, "Theo"); 
         this.cacao = new FloraFauna("cacao", 6, "Barbara");
-        //this.croczilla = new Monster("croczilla");
     }
 
     public FloraFauna getFrog() {

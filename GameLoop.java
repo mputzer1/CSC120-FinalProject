@@ -41,7 +41,7 @@ public class GameLoop { //Maybe have a class w/ help commands?
         // The do...while structure means we execute the body of the loop once before checking the stopping condition
         do {
 
-            //Checks user location and shows paths
+            //Checks user location and shows paths available
             System.out.println("\nThe following paths you may take are listed below:");
             Iterator<EndpointPair<String>> GraphIterator = Graph.incidentEdges(userLocation).iterator();
             while (GraphIterator.hasNext()) {
@@ -189,6 +189,7 @@ public class GameLoop { //Maybe have a class w/ help commands?
                 }
             }
 
+            //Allows user to check inventory in the lab
             if (userLocation.equals("lab")) {
                 //Move the commands below to the lab class
                 System.out.println("\nYou are back to the lab. Would you like to check your inventory?");
