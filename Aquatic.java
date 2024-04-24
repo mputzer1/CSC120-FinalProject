@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Aquatic extends Biome {
     private FloraFauna dolphin;
     private FloraFauna sea_anemone;
@@ -9,15 +11,28 @@ public class Aquatic extends Biome {
         this.kraken = new Monster("kraken");
     }
 
+    public FloraFauna getDolphin() {
+        return this.dolphin;
+    }
+
     public void welcome() {
         System.out.println("Aquatic welcome");
         //Reads welcome message
     }
 
-    public void aquaticriddle() {
-        System.out.println("Aquatic riddle");
-        //riddle
-        //Read file (maybe same file for all the riddles, but read specific lines, avoid creating 478478 files)
-        //User answers one riddle then another riddle for second animal(3 attempts per riddle)
+    public FloraFauna dolphinRiddle(Scanner s) {
+        if (riddle(s, "dolphin", "kraken", "DolphinRiddle.txt")) {
+            return this.dolphin;
+        } else {
+            return null;
+        }
+    }
+
+    public FloraFauna anemoneRiddle(Scanner s) {
+        if (riddle(s, "sea anemone", "kraken", "AnemoneRiddle.txt")) {
+            return this.sea_anemone;
+        } else {
+            return null;
+        }
     }
 }

@@ -1,4 +1,3 @@
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -14,18 +13,13 @@ public class GameLoop { //Maybe have a class w/ help commands?
         ImmutableValueGraph<String, String> Graph = RoomConnections.getGraph();
         String userLocation = "lab";
         ArrayList<String> targetArrayList = new ArrayList<>();
-        ArrayList<String> sourceArrayList = new ArrayList<>();
+        ArrayList<String> sourceArrayList = new ArrayList<>(); //Consider consolidating these arraylists into hashtable (dictionary)
         ArrayList<String> edgeArrayList = new ArrayList<>();
         Rainforest rainforest = new Rainforest();
         Desert desert = new Desert();
         Aquatic aquatic = new Aquatic();
         Tundra tundra = new Tundra();
         ArrayList<FloraFauna> inventory = new ArrayList<>();
-        boolean hasFrog = false;
-        boolean hasCacao = false;
-        boolean hasCamel = false;
-        boolean hasCactus = false;
-        //add other had animals
 
         // This is a "flag" to let us know when the loop should end
         boolean stillPlaying = true;
@@ -47,7 +41,7 @@ public class GameLoop { //Maybe have a class w/ help commands?
         // The do...while structure means we execute the body of the loop once before checking the stopping condition
         do {
 
-            //Checks user location
+            //Checks user location and shows paths
             System.out.println("\nThe following paths you may take are listed below:");
             Iterator<EndpointPair<String>> GraphIterator = Graph.incidentEdges(userLocation).iterator();
             while (GraphIterator.hasNext()) {
@@ -88,29 +82,25 @@ public class GameLoop { //Maybe have a class w/ help commands?
                   }
                 }
 
+            //Series of if statements to check user location, ask riddles, and update inventory
             if (userLocation.equals("rainforest")) {
-                if (hasFrog == false) {
+                FloraFauna poison_dart_frog = rainforest.getFrog();
+                if (!inventory.contains(poison_dart_frog)) {
                     rainforest.welcome();
-                    FloraFauna poison_dart_frog = rainforest.frogriddle(userInput);
+                    poison_dart_frog = rainforest.frogRiddle(userInput);
                     if (poison_dart_frog == null) {
                         userLocation = "lab";
                         inventory.clear();
-                        hasFrog = false;
-                        hasCacao = false;
                     } else {
                         inventory.add(poison_dart_frog);
-                        hasFrog = true;
                     }  
-                if (inventory.contains(poison_dart_frog) && hasCacao == false) {
-                    FloraFauna cacao = rainforest.cacaoriddle(userInput);
+                if (inventory.contains(poison_dart_frog)) {
+                    FloraFauna cacao = rainforest.cacaoRiddle(userInput);
                     if (cacao == null) {
                         userLocation = "lab";
                         inventory.clear();
-                        hasFrog = false;
-                        hasCacao = false;
                     } else {
                         inventory.add(cacao);
-                        hasCacao = true;
                     }
                 }
                 } else {
@@ -119,39 +109,85 @@ public class GameLoop { //Maybe have a class w/ help commands?
             }
 
 
-            if (userLocation.equals("desert")) { //Complete edits to look like rainforest
-                desert.welcome();
-                // FloraFauna camel = desert.camelriddle(userInput);
-                // if (camel == null) {
-                //     userLocation = "lab";
-                //     inventory.clear();
-                // } else {
-                //     inventory.add(camel);
-                //     FloraFauna cactus = desert.cactusriddle(userInput);
-                //     if (cactus == null) {
-                //         userLocation = "lab";
-                //         inventory.clear();
-                //     } else {
-                //         inventory.add(cactus);
-                //     }
-                // }
+
+            if (userLocation.equals("desert")) { 
+                FloraFauna camel = desert.getCamel();
+                if (!inventory.contains(camel)) {
+                    desert.welcome();
+                    camel = desert.camelRiddle(userInput);
+                    if (camel == null) {
+                        userLocation = "lab";
+                        inventory.clear();
+                    } else {
+                        inventory.add(camel);
+                    }  
+                if (inventory.contains(camel)) {
+                    FloraFauna cactus = desert.cactusRiddle(userInput);
+                    if (cactus == null) {
+                        userLocation = "lab";
+                        inventory.clear();
+                    } else {
+                        inventory.add(cactus);
+                    }
+                }
+                } else {
+                    System.out.println("No more creatures to find in the desert!");
+                }
             } 
 
 
             if (userLocation.equals("aquatic")) {
-                //Fill with aquatic
-                aquatic.welcome();
-                aquatic.aquaticriddle();
+                FloraFauna dolphin = aquatic.getDolphin();
+                if (!inventory.contains(dolphin)) {
+                    aquatic.welcome();
+                    dolphin = aquatic.dolphinRiddle(userInput);
+                    if (dolphin == null) {
+                        userLocation = "lab";
+                        inventory.clear();
+                    } else {
+                        inventory.add(dolphin);
+                    }  
+                if (inventory.contains(dolphin)) {
+                    FloraFauna anemone = aquatic.anemoneRiddle(userInput);
+                    if (anemone == null) {
+                        userLocation = "lab";
+                        inventory.clear();
+                    } else {
+                        inventory.add(anemone);
+                    }
+                }
+                } else {
+                    System.out.println("No more creatures to find in the aquatic biome!");
+                }
             }
-
 
 
             if (userLocation.equals("tundra")) {
-                tundra.welcome();
-                tundra.tundrariddle();
+                if (userLocation.equals("tundra")) {
+                    FloraFauna arctic_fox = tundra.getFox();
+                    if (!inventory.contains(arctic_fox)) {
+                        tundra.welcome();
+                        arctic_fox = tundra.foxRiddle(userInput);
+                        if (arctic_fox == null) {
+                            userLocation = "lab";
+                            inventory.clear();
+                        } else {
+                            inventory.add(arctic_fox);
+                        }  
+                    if (inventory.contains(arctic_fox)) {
+                        FloraFauna fern = tundra.fernRiddle(userInput);
+                        if (fern == null) {
+                            userLocation = "lab";
+                            inventory.clear();
+                        } else {
+                            inventory.add(fern);
+                        }
+                    }
+                    } else {
+                        System.out.println("No more creatures to find in the tundra!");
+                    }
+                }
             }
-
-
 
             if (userLocation.equals("lab")) {
                 //Move the commands below to the lab class
@@ -188,13 +224,6 @@ public class GameLoop { //Maybe have a class w/ help commands?
 
         // Tidy up
         userInput.close();
-
-        // Once you exit the loop, you may need to deal with various possible stopping conditions
-        // if (userLocation.equals("Lab") && userResponse.equals("North")) {
-        //     System.out.println("Yay, you won!");
-        // } else { // userResponse.equals("LOSE")
-        //     System.out.println("Better luck next time.");
-        // }
 
     }
 

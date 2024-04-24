@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Tundra extends Biome {
     private FloraFauna arctic_fox;
     private FloraFauna fern;
@@ -9,15 +11,28 @@ public class Tundra extends Biome {
         this.yeti = new Monster("yeti");
     }
 
+    public FloraFauna getFox() {
+        return this.arctic_fox;
+    }
+
     public void welcome() {
         System.out.println("Tundra Welcome!");
         //Reads welcome message
     }
 
-    public void tundrariddle() {
-        System.out.println("Tundra Riddle!");
-        //riddle
-        //Read file (maybe same file for all the riddles, but read specific lines, avoid creating 478478 files)
-        //User answers one riddle then another riddle for second animal(3 attempts per riddle)
+    public FloraFauna foxRiddle(Scanner s) {
+        if (riddle(s, "arctic fox", "yeti", "FoxRiddle.txt")) {
+            return this.arctic_fox;
+        } else {
+            return null;
+        }
+    }
+
+    public FloraFauna fernRiddle(Scanner s) {
+        if (riddle(s, "fern", "yeti", "FernRiddle.txt")) {
+            return this.fern;
+        } else {
+            return null;
+        }
     }
 }
