@@ -14,9 +14,7 @@ public class Rainforest extends Biome {
     }
 
     public void welcome() {
-        System.out.println("\nYou notice a large tree...");
-        //Reads welcome message
-        //or send to file class and have specific lines
+        System.out.println("\nYou are surrounded by lush green foliage. You cannot see the sky above the forest canopy, but you feel a light sprinkle of rain. Birds are heard in the distance and you notice...");
     }
 
     public FloraFauna frogRiddle(Scanner s) {

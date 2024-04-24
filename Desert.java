@@ -14,11 +14,10 @@ public class Desert extends Biome {
     }
 
     public void welcome() {
-        //Reads welcome message
-        //Or send to file class and have specific lines read
+        System.out.println("The sun is low over the horizon and you spot a sea of orange sand in the distance. The wind is harsh and creates swirling sand spires. You notice...");
     }
 
-    public FloraFauna camelRiddle(Scanner s) { //Is there a way to consoliate this into one class (biome) or must it be separate b/c different things printed?
+    public FloraFauna camelRiddle(Scanner s) { 
         if (riddle(s, "camel", "sharknado", "CamelRiddle.txt")) {
             return this.camel;
         } else {
