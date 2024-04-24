@@ -5,7 +5,14 @@ import java.util.Scanner;
 import com.google.common.graph.EndpointPair;
 import com.google.common.graph.ImmutableValueGraph;
 
+/**
+ * Runs the commands of the game in order until user wins/loses
+ */
 public class GameLoop { //Maybe have a class w/ help commands?
+
+    /**
+     * Main method that runs the whole game loop
+     */
     public static void main(String[] args) {
         
         //Attributes
@@ -189,7 +196,7 @@ public class GameLoop { //Maybe have a class w/ help commands?
                 }
             }
 
-            //Allows user to check inventory in the lab
+            //Allows user to check inventory in the lab --) might create lab class and move this info there
             if (userLocation.equals("lab")) {
                 //Move the commands below to the lab class
                 System.out.println("\nYou are back to the lab. Would you like to check your inventory?");

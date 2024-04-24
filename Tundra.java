@@ -6,7 +6,7 @@ public class Tundra extends Biome {
 
     public Tundra() {
         this.arctic_fox = new FloraFauna("arctic fox", 6, "Gary"); 
-        this.fern = new FloraFauna("fern", 5, "finn");
+        this.fern = new FloraFauna("fern", 5, "Finn");
     }
 
     public FloraFauna getFox() {
