@@ -1,9 +1,15 @@
 import com.google.common.graph.ImmutableValueGraph;
 import com.google.common.graph.ValueGraphBuilder;
 
+/**
+ * Class for a map of the biomes
+ */
 public class RoomConnections {
   private ImmutableValueGraph<String, String> Graph;
 
+  /**
+   * Creates a graph that maps all the biomes and their named connections
+   */
   public RoomConnections() {
     this.Graph = ValueGraphBuilder.directed()
     .<String, String>immutable()
@@ -26,6 +32,10 @@ public class RoomConnections {
     .build();
   }
 
+  /**
+   * Getter for the biome map/graph
+   * @return the biome graph
+   */
   public ImmutableValueGraph<String, String> getGraph() {
     return this.Graph;
   }

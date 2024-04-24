@@ -48,7 +48,7 @@ public class GameLoop { //Maybe have a class w/ help commands?
         // The do...while structure means we execute the body of the loop once before checking the stopping condition
         do {
 
-            //Checks user location and shows paths available
+            //Checks user location and shows paths available (Is there an easier way to do this?)
             System.out.println("\nThe following paths you may take are listed below:");
             Iterator<EndpointPair<String>> GraphIterator = Graph.incidentEdges(userLocation).iterator();
             while (GraphIterator.hasNext()) {
@@ -89,7 +89,8 @@ public class GameLoop { //Maybe have a class w/ help commands?
                   }
                 }
 
-            //Series of if statements to check user location, ask riddles, and update inventory
+            //Series of if statements to check user location, ask riddles, and update inventory (I'm wondering if these can be consolidated somehow...)
+
             if (userLocation.equals("rainforest")) {
                 FloraFauna poison_dart_frog = rainforest.getFrog();
                 if (!inventory.contains(poison_dart_frog)) {
@@ -198,7 +199,7 @@ public class GameLoop { //Maybe have a class w/ help commands?
 
             //Allows user to check inventory in the lab --) might create lab class and move this info there
             if (userLocation.equals("lab")) {
-                //Move the commands below to the lab class
+                //Potentially move the commands below to the lab class?
                 System.out.println("\nYou are back to the lab. Would you like to check your inventory?");
                 userResponse = userInput.nextLine().toLowerCase();
                 while (!userResponse.equals("yes") && !userResponse.equals("no")) {
@@ -220,7 +221,7 @@ public class GameLoop { //Maybe have a class w/ help commands?
                    System.out.println("\nThe game continues!"); 
                 }
             }
-
+                //Update this later
                 //stillPlaying = false;
 
 
