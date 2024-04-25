@@ -17,6 +17,7 @@ public class GameLoop { //Maybe have a class w/ help commands?
         
         //Attributes
         RoomConnections RoomConnections = new RoomConnections();
+        FileReader fileReader = new FileReader();
         ImmutableValueGraph<String, String> Graph = RoomConnections.getGraph();
         String userLocation = "lab";
         ArrayList<String> targetArrayList = new ArrayList<>();
@@ -38,10 +39,7 @@ public class GameLoop { //Maybe have a class w/ help commands?
         String userResponse = "";
 
         // This could be replaced with a more interesting opening
-        System.out.println("******************");
-        System.out.println("WELCOME TO OUR ANIMAL GAME");
-        System.out.println("******************");
-        System.out.println("\nInsert instructions for game + intro. You are in a dim room...lab ");
+        fileReader.messageReader("Introduction.txt");
         System.out.println("\nEnter your username:");
         String username = userInput.nextLine().toLowerCase(); //Check for invalid and store in file possibly
 
@@ -220,6 +218,20 @@ public class GameLoop { //Maybe have a class w/ help commands?
                 } else {
                    System.out.println("\nThe game continues!"); 
                 }
+                // System.out.println("Would you like to submit your inventory for review? Warning: the game will end.");
+                // userResponse = userInput.nextLine().toLowerCase();
+                // while (!userResponse.equals("yes") && !userResponse.equals("no")) {
+                //     System.out.println("\nI don't recognize " + "'" + userResponse +"'");
+                //     userResponse = userInput.nextLine().toLowerCase();
+                // }
+                // if (userResponse.equals("yes")) {
+                //     //Tell user how many animals they found + their points
+                        //Print leaderboard w/ points
+                        //return still playing=false
+                // } else {
+                //    System.out.println("\nThe game continues!"); 
+                // }
+                //Maybe user has option to end game here and submit their inventory
             }
                 //Update this later
                 //stillPlaying = false;

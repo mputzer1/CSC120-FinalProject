@@ -22,7 +22,7 @@ public class Biome {
      * @return boolean (whether riddle was answered correctly)
      */
     public boolean riddle(Scanner s, String FloraFauna, String Monster, String filename) {
-        this.FileReader.RiddleReader(filename);
+        this.FileReader.messageReader(filename);
         String userResponse = "";
         int incorrectCounter = 0;
         while (true) {
@@ -33,7 +33,7 @@ public class Biome {
                 incorrectCounter += 1;
                 System.out.println("The " + Monster + " is " + (3 - incorrectCounter) + " step(s) away.");
                 if (incorrectCounter == 3) {
-                    System.out.println("\nYou've been eaten!");
+                    System.out.println("\nYour inventory has been eaten!");
                     return false;
                 }
             }

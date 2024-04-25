@@ -7,13 +7,12 @@ import java.io.BufferedWriter; // Import this class to write to a file
 
 public class FileReader {
 
-  public void RiddleReader(String filename) {
+  public void messageReader(String filename) {
     try {
       File myFile = new File(filename);
       Scanner fileReader = new Scanner(myFile); // <- Same kind of object we used to read from the command line! But instead of System.in, we're reading from the file
 
       // Loop until we run out of lines
-      System.out.println("\n***RIDDLE***");
       while (fileReader.hasNextLine()) {
         String data = fileReader.nextLine();
         System.out.println(data);
