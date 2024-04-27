@@ -15,9 +15,9 @@ public class GameLoop { //Maybe have a class w/ help commands?
      */
     public static void main(String[] args) {
         
-        //Attributes
+        //Attributes (organize somehow)
         RoomConnections RoomConnections = new RoomConnections();
-        FileReader fileReader = new FileReader();
+        FileClass fileClass = new FileClass();
         ImmutableValueGraph<String, String> Graph = RoomConnections.getGraph();
         String userLocation = "lab";
         ArrayList<String> targetArrayList = new ArrayList<>();
@@ -27,7 +27,9 @@ public class GameLoop { //Maybe have a class w/ help commands?
         Desert desert = new Desert();
         Aquatic aquatic = new Aquatic();
         Tundra tundra = new Tundra();
-        ArrayList<FloraFauna> inventory = new ArrayList<>();
+        Lab lab = new Lab();
+        ArrayList<FloraFauna> inventory = lab.getInventory();
+        int nClearInventory = lab.getClearInventory();
 
         // This is a "flag" to let us know when the loop should end
         boolean stillPlaying = true;
@@ -39,7 +41,7 @@ public class GameLoop { //Maybe have a class w/ help commands?
         String userResponse = "";
 
         // This could be replaced with a more interesting opening
-        fileReader.messageReader("Introduction.txt");
+        fileClass.fileReader("Introduction.txt");
         System.out.println("\nEnter your username:");
         String username = userInput.nextLine().toLowerCase(); //Check for invalid and store in file possibly
 
@@ -92,11 +94,10 @@ public class GameLoop { //Maybe have a class w/ help commands?
             if (userLocation.equals("rainforest")) {
                 FloraFauna poison_dart_frog = rainforest.getFrog();
                 if (!inventory.contains(poison_dart_frog)) {
-                    rainforest.welcome();
                     poison_dart_frog = rainforest.frogRiddle(userInput);
                     if (poison_dart_frog == null) {
                         userLocation = "lab";
-                        inventory.clear();
+                        lab.resetInventory();
                     } else {
                         inventory.add(poison_dart_frog);
                     }  
@@ -104,13 +105,13 @@ public class GameLoop { //Maybe have a class w/ help commands?
                     FloraFauna cacao = rainforest.cacaoRiddle(userInput);
                     if (cacao == null) {
                         userLocation = "lab";
-                        inventory.clear();
+                        lab.resetInventory();
                     } else {
                         inventory.add(cacao);
                     }
                 }
                 } else {
-                    System.out.println("No more creatures to find in the rainforest!");
+                    System.out.println("\nNo more creatures to find in the rainforest!");
                 }
             }
 
@@ -119,11 +120,11 @@ public class GameLoop { //Maybe have a class w/ help commands?
             if (userLocation.equals("desert")) { 
                 FloraFauna camel = desert.getCamel();
                 if (!inventory.contains(camel)) {
-                    desert.welcome();
                     camel = desert.camelRiddle(userInput);
                     if (camel == null) {
                         userLocation = "lab";
                         inventory.clear();
+                        nClearInventory += 1;
                     } else {
                         inventory.add(camel);
                     }  
@@ -132,12 +133,13 @@ public class GameLoop { //Maybe have a class w/ help commands?
                     if (cactus == null) {
                         userLocation = "lab";
                         inventory.clear();
+                        nClearInventory += 1;
                     } else {
                         inventory.add(cactus);
                     }
                 }
                 } else {
-                    System.out.println("No more creatures to find in the desert!");
+                    System.out.println("\nNo more creatures to find in the desert!");
                 }
             } 
 
@@ -145,11 +147,11 @@ public class GameLoop { //Maybe have a class w/ help commands?
             if (userLocation.equals("aquatic")) {
                 FloraFauna dolphin = aquatic.getDolphin();
                 if (!inventory.contains(dolphin)) {
-                    aquatic.welcome();
                     dolphin = aquatic.dolphinRiddle(userInput);
                     if (dolphin == null) {
                         userLocation = "lab";
                         inventory.clear();
+                        nClearInventory += 1;
                     } else {
                         inventory.add(dolphin);
                     }  
@@ -158,12 +160,13 @@ public class GameLoop { //Maybe have a class w/ help commands?
                     if (anemone == null) {
                         userLocation = "lab";
                         inventory.clear();
+                        nClearInventory += 1;
                     } else {
                         inventory.add(anemone);
                     }
                 }
                 } else {
-                    System.out.println("No more creatures to find in the aquatic biome!");
+                    System.out.println("\nNo more creatures to find in the aquatic biome!");
                 }
             }
 
@@ -172,11 +175,11 @@ public class GameLoop { //Maybe have a class w/ help commands?
                 if (userLocation.equals("tundra")) {
                     FloraFauna arctic_fox = tundra.getFox();
                     if (!inventory.contains(arctic_fox)) {
-                        tundra.welcome();
                         arctic_fox = tundra.foxRiddle(userInput);
                         if (arctic_fox == null) {
                             userLocation = "lab";
                             inventory.clear();
+                            nClearInventory += 1;
                         } else {
                             inventory.add(arctic_fox);
                         }  
@@ -185,61 +188,22 @@ public class GameLoop { //Maybe have a class w/ help commands?
                         if (fern == null) {
                             userLocation = "lab";
                             inventory.clear();
+                            nClearInventory += 1;
                         } else {
                             inventory.add(fern);
                         }
                     }
                     } else {
-                        System.out.println("No more creatures to find in the tundra!");
+                        System.out.println("\nNo more creatures to find in the tundra!");
                     }
                 }
             }
 
-            //Allows user to check inventory in the lab --) might create lab class and move this info there
+            //Allows user to check and review inventory in the lab 
             if (userLocation.equals("lab")) {
-                //Potentially move the commands below to the lab class?
-                System.out.println("\nYou are back to the lab. Would you like to check your inventory?");
-                userResponse = userInput.nextLine().toLowerCase();
-                while (!userResponse.equals("yes") && !userResponse.equals("no")) {
-                    System.out.println("\nI don't recognize " + "'" + userResponse +"'");
-                    userResponse = userInput.nextLine().toLowerCase();
-                }
-                if (userResponse.equals("yes")) {
-                    System.out.println("\n==============");
-                    System.out.println("YOUR INVENTORY");
-                    System.out.println("==============");
-                    if (inventory.isEmpty()) {
-                        System.out.println("Your inventory is empty.");
-                    } else {
-                        for (int i = 0; i < inventory.size(); i++) {
-                            System.out.println(inventory.get(i));
-                        }
-                    }
-                } else {
-                   System.out.println("\nThe game continues!"); 
-                }
-                // System.out.println("Would you like to submit your inventory for review? Warning: the game will end.");
-                // userResponse = userInput.nextLine().toLowerCase();
-                // while (!userResponse.equals("yes") && !userResponse.equals("no")) {
-                //     System.out.println("\nI don't recognize " + "'" + userResponse +"'");
-                //     userResponse = userInput.nextLine().toLowerCase();
-                // }
-                // if (userResponse.equals("yes")) {
-                //     //Tell user how many animals they found + their points
-                        //Print leaderboard w/ points
-                        //return still playing=false
-                // } else {
-                //    System.out.println("\nThe game continues!"); 
-                // }
-                //Maybe user has option to end game here and submit their inventory
+                lab.checkInventory(userInput);
+                stillPlaying = lab.submitInventory(userInput, username, fileClass, stillPlaying);
             }
-                //Update this later
-                //stillPlaying = false;
-
-
-            // ***********************************************************************
-            // And as the player interacts, you'll check to see if the game should end
-            //  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓
 
         } while (stillPlaying);
 

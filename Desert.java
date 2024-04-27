@@ -23,13 +23,6 @@ public class Desert extends Biome {
         return this.camel;
     }
 
-    /**
-     * Prints welcome message
-     */
-    public void welcome() {
-        System.out.println("The sun is low over the horizon and you spot a sea of orange sand in the distance. The wind is harsh and creates swirling sand spires. You notice...");
-    }
-
 
     /**
      * Calls riddle method and checks if true or false is returned to determine whether to return camel or null.

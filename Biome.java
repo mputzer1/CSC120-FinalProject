@@ -4,13 +4,13 @@ import java.util.Scanner;
  * Biome class which has the file reader attribute.
  */
 public class Biome {
-    private FileReader FileReader;
+    private FileClass FileReader;
 
     /**
      * Constructor for biome class
      */
     public Biome() {
-        this.FileReader = new FileReader();
+        this.FileReader = new FileClass();
     }
 
     /**
@@ -22,7 +22,8 @@ public class Biome {
      * @return boolean (whether riddle was answered correctly)
      */
     public boolean riddle(Scanner s, String FloraFauna, String Monster, String filename) {
-        this.FileReader.messageReader(filename);
+        System.out.println("");
+        this.FileReader.fileReader(filename);
         String userResponse = "";
         int incorrectCounter = 0;
         while (true) {
@@ -31,9 +32,11 @@ public class Biome {
             if (!userResponse.equals(FloraFauna)) {
                 System.out.println("\nYou've answered incorrectly!");
                 incorrectCounter += 1;
-                System.out.println("The " + Monster + " is " + (3 - incorrectCounter) + " step(s) away.");
+                if (incorrectCounter < 3) {
+                    System.out.println("The " + Monster + " is " + (3 - incorrectCounter) + " feet away.");
+                }
                 if (incorrectCounter == 3) {
-                    System.out.println("\nYour inventory has been eaten!");
+                    System.out.println("Your inventory has been eaten!");
                     return false;
                 }
             }

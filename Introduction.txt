@@ -4,7 +4,7 @@ BIOME BLAST: DR. FERNSBEE AND THE BIODIVERSITY QUEST
 
 You are a scientist for the world famous biologist Dr. Flora Fernsbee. She has tasked you with collecting 8 endangered species from 4 different biomes across the globe in efforts to save the planet’s biodiversity. Dr. Fernsbee has assigned her dear friend and trusted colleague (who just so happens to be an owl) Dr. Athene Strix. She is unable to collect the animals herself, however, she will gladly provide riddles to help you solve which species to save.
 
-BUT WAIT! It won’t be so simple. Her nemesis Dr. Fossileus Fueleus has released four different monsters in each biome in order to kill off these animals so he can build his Exxon plant. You will have a limited number of guesses for each riddle before the monsters will eat your inventory! 
+BUT WAIT! It won’t be so simple. Her nemesis Dr. Fossileus Fueleus has released four different monsters in each biome in order to kill off these animals so he can build his Exxon plant. You will have a limited number of guesses for each riddle before the monsters will eat your inventory! The more times your inventory is eaten, the lower your final score.
 
 *****************
 

@@ -22,14 +22,7 @@ public class Tundra extends Biome {
     public FloraFauna getFox() {
         return this.arctic_fox;
     }
-
-    /**
-     * Prints welcome message
-     */
-    public void welcome() {
-        System.out.println("Tundra Welcome!");
-        //Reads welcome message
-    }
+    
 
     /**
      * Calls riddle method and checks if true or false is returned to determine whether to return fox or null.

@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.util.Scanner; // Import the Scanner class to read text files
 import java.io.BufferedWriter; // Import this class to write to a file
 
-public class FileReader {
+public class FileClass {
 
-  public void messageReader(String filename) {
+  public void fileReader(String fileName) {
     try {
-      File myFile = new File(filename);
+      File myFile = new File(fileName);
       Scanner fileReader = new Scanner(myFile); // <- Same kind of object we used to read from the command line! But instead of System.in, we're reading from the file
 
       // Loop until we run out of lines
@@ -26,17 +26,16 @@ public class FileReader {
       e.printStackTrace();
     }
   }
+
+  public void fileWriter(String fileName, String message) {
+    try {
+      BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true)); 
+      writer.write("\n"+ message);
+      writer.close();
+    } catch (IOException e) {
+      System.out.println(e); // print error message
+    }
+  }
 }
 
-//Might use this later
-//     // Writing to files
-//     try {
-//       BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt")); // Careful! This will overwrite any previous contents
-//       writer.write("Tada! We wrote to a file!");
-//       writer.close();
-//     } catch (IOException e) {
-//       System.out.println(e); // print error message
-//     }
 
-//   }
-// }

@@ -24,14 +24,6 @@ public class Aquatic extends Biome {
     }
 
     /**
-     * Prints welcome message
-     */
-    public void welcome() {
-        System.out.println("Aquatic welcome");
-        //Reads welcome message
-    }
-
-    /**
      * Calls riddle method and checks if true or false is returned to determine whether to return dolphin or null.
      * @param Scanner s from the game loop class
      * @return dolphin object or null
