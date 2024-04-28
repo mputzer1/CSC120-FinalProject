@@ -15,12 +15,20 @@ public class Desert extends Biome {
         this.cactus = new FloraFauna("cactus", 3, "Janice");
     }
 
-     /**
+    /**
      * Getter for camel
      * @return the camel object
      */
-    public FloraFauna getCamel() {
+    public FloraFauna getAnimal() {
         return this.camel;
+    }
+
+    /**
+     * Getter for cactus
+     * @return the cactus object
+     */
+    public FloraFauna getPlant() {
+        return this.cactus;
     }
 
 
@@ -29,7 +37,7 @@ public class Desert extends Biome {
      * @param Scanner s from the game loop class
      * @return camel object or null
      */
-    public FloraFauna camelRiddle(Scanner s) { 
+    public FloraFauna animalRiddle(Scanner s) { 
         if (riddle(s, "camel", "sharknado", "CamelRiddle.txt")) {
             return this.camel;
         } else {
@@ -42,12 +50,16 @@ public class Desert extends Biome {
      * @param Scanner s from the game loop class
      * @return cactus object or null
      */
-    public FloraFauna cactusRiddle(Scanner s) {
+    public FloraFauna plantRiddle(Scanner s) {
         if (riddle(s, "cactus", "sharknado", "CactusRiddle.txt")) {
             return this.cactus;
         } else {
             return null;
         }
+    }
+
+    public String toString() {
+        return "desert";
     }
 
 }

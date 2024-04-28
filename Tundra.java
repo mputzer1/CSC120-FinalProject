@@ -16,11 +16,19 @@ public class Tundra extends Biome {
     }
 
     /**
-     * Getter for fox
+     * Getter for arctic fox
      * @return the fox object
      */
-    public FloraFauna getFox() {
+    public FloraFauna getAnimal() {
         return this.arctic_fox;
+    }
+
+    /**
+     * Getter for fern
+     * @return the fern object
+     */
+    public FloraFauna getPlant() {
+        return this.fern;
     }
     
 
@@ -29,7 +37,7 @@ public class Tundra extends Biome {
      * @param Scanner s from the game loop class
      * @return fox object or null
      */
-    public FloraFauna foxRiddle(Scanner s) {
+    public FloraFauna animalRiddle(Scanner s) {
         if (riddle(s, "arctic fox", "yeti", "FoxRiddle.txt")) {
             return this.arctic_fox;
         } else {
@@ -42,11 +50,15 @@ public class Tundra extends Biome {
      * @param Scanner s from the game loop class
      * @return fern object or null
      */
-    public FloraFauna fernRiddle(Scanner s) {
+    public FloraFauna plantRiddle(Scanner s) {
         if (riddle(s, "fern", "yeti", "FernRiddle.txt")) {
             return this.fern;
         } else {
             return null;
         }
+    }
+
+    public String toString() {
+        return "tundra";
     }
 }

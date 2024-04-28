@@ -14,10 +14,6 @@ public class Lab {
         return this.inventory;
     }
 
-    public int getClearInventory() {
-        return this.nClearInventory;
-    }
-
     public void resetInventory() {
         inventory.clear();
         nClearInventory += 1;

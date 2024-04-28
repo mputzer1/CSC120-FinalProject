@@ -5,12 +5,42 @@ import java.util.Scanner;
  */
 public class Biome {
     private FileClass FileReader;
+    private FloraFauna animal;
+    private FloraFauna plant;
 
     /**
      * Constructor for biome class
      */
     public Biome() {
         this.FileReader = new FileClass();
+        this.animal = new FloraFauna(null, null, null);
+        this.plant = new FloraFauna(null, null, null);
+    }
+
+    /**
+     * Getter for plant
+     * @return the plant object
+     */
+    public FloraFauna getAnimal() {
+        return this.animal;
+    }
+
+    /**
+     * Getter for plant
+     * @return the plant object
+     */
+    public FloraFauna getPlant() {
+        return this.plant;
+    }
+
+
+    public FloraFauna animalRiddle(Scanner s) {
+        return this.animal;
+    }
+
+
+    public FloraFauna plantRiddle(Scanner s) {
+        return this.plant;
     }
 
     /**
@@ -45,6 +75,10 @@ public class Biome {
                 return true;
             }
         }
+    }
+
+    public String toString() {
+        return "This is the default biome toString";
     }
 }
 

@@ -1,16 +1,17 @@
+
 import com.google.common.graph.ImmutableValueGraph;
 import com.google.common.graph.ValueGraphBuilder;
 
 /**
  * Class for a map of the biomes
  */
-public class RoomConnections {
+public class BiomeConnections {
   private ImmutableValueGraph<String, String> Graph;
 
   /**
    * Creates a graph that maps all the biomes and their named connections
    */
-  public RoomConnections() {
+  public BiomeConnections() {
     this.Graph = ValueGraphBuilder.directed()
     .<String, String>immutable()
     .putEdgeValue("rainforest", "aquatic", "east")
@@ -39,4 +40,5 @@ public class RoomConnections {
   public ImmutableValueGraph<String, String> getGraph() {
     return this.Graph;
   }
+
 }

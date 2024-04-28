@@ -16,11 +16,19 @@ public class Rainforest extends Biome {
     }
 
     /**
-     * Getter for the poison dart frog
-     * @return the poison dart frog object
+     * Getter for frog
+     * @return the frog object
      */
-    public FloraFauna getFrog() {
+    public FloraFauna getAnimal() {
         return this.poison_dart_frog;
+    }
+
+    /**
+     * Getter for cacao
+     * @return the cacao object
+     */
+    public FloraFauna getPlant() {
+        return this.cacao;
     }
 
     /**
@@ -28,7 +36,7 @@ public class Rainforest extends Biome {
      * @param Scanner s from the game loop class
      * @return poison dart frog object or null
      */
-    public FloraFauna frogRiddle(Scanner s) {
+    public FloraFauna animalRiddle(Scanner s) {
         if (riddle(s, "poison dart frog", "croczilla", "FrogRiddle.txt")) {
             return this.poison_dart_frog;
         } else {
@@ -41,12 +49,16 @@ public class Rainforest extends Biome {
      * @param Scanner s from the game loop class
      * @return cacao object or null
      */
-    public FloraFauna cacaoRiddle(Scanner s) {
+    public FloraFauna plantRiddle(Scanner s) {
         if (riddle(s, "cacao", "croczilla", "CacaoRiddle.txt")) {
             return this.cacao;
         } else {
             return null;
         }
+    }
+
+    public String toString() {
+        return "rainforest";
     }
 
 }

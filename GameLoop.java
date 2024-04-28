@@ -16,9 +16,9 @@ public class GameLoop { //Maybe have a class w/ help commands?
     public static void main(String[] args) {
         
         //Attributes (organize somehow)
-        RoomConnections RoomConnections = new RoomConnections();
+        BiomeConnections biomeConnections = new BiomeConnections();
         FileClass fileClass = new FileClass();
-        ImmutableValueGraph<String, String> Graph = RoomConnections.getGraph();
+        ImmutableValueGraph<String, String> Graph = biomeConnections.getGraph();
         String userLocation = "lab";
         ArrayList<String> targetArrayList = new ArrayList<>();
         ArrayList<String> sourceArrayList = new ArrayList<>(); //Consider consolidating these arraylists into hashtable (dictionary)
@@ -29,7 +29,12 @@ public class GameLoop { //Maybe have a class w/ help commands?
         Tundra tundra = new Tundra();
         Lab lab = new Lab();
         ArrayList<FloraFauna> inventory = lab.getInventory();
-        int nClearInventory = lab.getClearInventory();
+
+        ArrayList<Biome> biomes = new ArrayList<>();
+        biomes.add(rainforest);
+        biomes.add(desert);
+        biomes.add(tundra);
+        biomes.add(aquatic);
 
         // This is a "flag" to let us know when the loop should end
         boolean stillPlaying = true;
@@ -89,117 +94,35 @@ public class GameLoop { //Maybe have a class w/ help commands?
                   }
                 }
 
-            //Series of if statements to check user location, ask riddles, and update inventory (I'm wondering if these can be consolidated somehow...)
+            //Series of if statements to check user location, ask riddles, and update inventory
 
-            if (userLocation.equals("rainforest")) {
-                FloraFauna poison_dart_frog = rainforest.getFrog();
-                if (!inventory.contains(poison_dart_frog)) {
-                    poison_dart_frog = rainforest.frogRiddle(userInput);
-                    if (poison_dart_frog == null) {
-                        userLocation = "lab";
-                        lab.resetInventory();
-                    } else {
-                        inventory.add(poison_dart_frog);
-                    }  
-                if (inventory.contains(poison_dart_frog)) {
-                    FloraFauna cacao = rainforest.cacaoRiddle(userInput);
-                    if (cacao == null) {
-                        userLocation = "lab";
-                        lab.resetInventory();
-                    } else {
-                        inventory.add(cacao);
-                    }
-                }
-                } else {
-                    System.out.println("\nNo more creatures to find in the rainforest!");
-                }
-            }
-
-
-
-            if (userLocation.equals("desert")) { 
-                FloraFauna camel = desert.getCamel();
-                if (!inventory.contains(camel)) {
-                    camel = desert.camelRiddle(userInput);
-                    if (camel == null) {
-                        userLocation = "lab";
-                        inventory.clear();
-                        nClearInventory += 1;
-                    } else {
-                        inventory.add(camel);
-                    }  
-                if (inventory.contains(camel)) {
-                    FloraFauna cactus = desert.cactusRiddle(userInput);
-                    if (cactus == null) {
-                        userLocation = "lab";
-                        inventory.clear();
-                        nClearInventory += 1;
-                    } else {
-                        inventory.add(cactus);
-                    }
-                }
-                } else {
-                    System.out.println("\nNo more creatures to find in the desert!");
-                }
-            } 
-
-
-            if (userLocation.equals("aquatic")) {
-                FloraFauna dolphin = aquatic.getDolphin();
-                if (!inventory.contains(dolphin)) {
-                    dolphin = aquatic.dolphinRiddle(userInput);
-                    if (dolphin == null) {
-                        userLocation = "lab";
-                        inventory.clear();
-                        nClearInventory += 1;
-                    } else {
-                        inventory.add(dolphin);
-                    }  
-                if (inventory.contains(dolphin)) {
-                    FloraFauna anemone = aquatic.anemoneRiddle(userInput);
-                    if (anemone == null) {
-                        userLocation = "lab";
-                        inventory.clear();
-                        nClearInventory += 1;
-                    } else {
-                        inventory.add(anemone);
-                    }
-                }
-                } else {
-                    System.out.println("\nNo more creatures to find in the aquatic biome!");
-                }
-            }
-
-
-            if (userLocation.equals("tundra")) {
-                if (userLocation.equals("tundra")) {
-                    FloraFauna arctic_fox = tundra.getFox();
-                    if (!inventory.contains(arctic_fox)) {
-                        arctic_fox = tundra.foxRiddle(userInput);
-                        if (arctic_fox == null) {
+            for (int i=0; i < biomes.size(); i++) {
+                String stringBiome = biomes.get(i).toString();
+                if (userLocation.equals(stringBiome)) {
+                    Biome classBiome = biomes.get(i);
+                    FloraFauna animal = classBiome.getAnimal();
+                    if (!inventory.contains(animal)) {
+                        animal = classBiome.animalRiddle(userInput);
+                        if (animal == null) {
                             userLocation = "lab";
-                            inventory.clear();
-                            nClearInventory += 1;
+                            lab.resetInventory();
                         } else {
-                            inventory.add(arctic_fox);
-                        }  
-                    if (inventory.contains(arctic_fox)) {
-                        FloraFauna fern = tundra.fernRiddle(userInput);
-                        if (fern == null) {
-                            userLocation = "lab";
-                            inventory.clear();
-                            nClearInventory += 1;
-                        } else {
-                            inventory.add(fern);
+                            inventory.add(animal);
+                            FloraFauna plant = classBiome.plantRiddle(userInput);
+                            if (plant == null) {
+                                userLocation = "lab";
+                                lab.resetInventory();
+                            } else {
+                                inventory.add(plant);
+                            }
                         }
-                    }
                     } else {
-                        System.out.println("\nNo more creatures to find in the tundra!");
+                       System.out.println("\nNo more creatures to find in the " + stringBiome + " biome!");
                     }
                 }
             }
 
-            //Allows user to check and review inventory in the lab 
+           // Allows user to check and review inventory in the lab 
             if (userLocation.equals("lab")) {
                 lab.checkInventory(userInput);
                 stillPlaying = lab.submitInventory(userInput, username, fileClass, stillPlaying);

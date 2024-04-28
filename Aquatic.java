@@ -19,8 +19,16 @@ public class Aquatic extends Biome {
      * Getter for dolphin
      * @return the dolphin object
      */
-    public FloraFauna getDolphin() {
+    public FloraFauna getAnimal() {
         return this.dolphin;
+    }
+
+    /**
+     * Getter for anemone
+     * @return the anemone object
+     */
+    public FloraFauna getPlant() {
+        return this.sea_anemone;
     }
 
     /**
@@ -28,7 +36,7 @@ public class Aquatic extends Biome {
      * @param Scanner s from the game loop class
      * @return dolphin object or null
      */
-    public FloraFauna dolphinRiddle(Scanner s) {
+    public FloraFauna animalRiddle(Scanner s) {
         if (riddle(s, "dolphin", "kraken", "DolphinRiddle.txt")) {
             return this.dolphin;
         } else {
@@ -41,11 +49,15 @@ public class Aquatic extends Biome {
      * @param Scanner s from the game loop class
      * @return sea anemone object or null
      */
-    public FloraFauna anemoneRiddle(Scanner s) {
+    public FloraFauna plantRiddle(Scanner s) {
         if (riddle(s, "sea anemone", "kraken", "AnemoneRiddle.txt")) {
             return this.sea_anemone;
         } else {
             return null;
         }
+    }
+
+    public String toString() {
+        return "aquatic";
     }
 }
