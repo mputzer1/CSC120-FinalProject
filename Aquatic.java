@@ -27,7 +27,7 @@ public class Aquatic extends Biome {
      * Prints welcome message
      */
     public void welcome() {
-        System.out.println("Aquatic welcome");
+        System.out.println("You find yourself submerged, surrounded by the endless blue sea. A school of barracuda pass by...wait...one of those fish doesn't look quite right. That's not a fish, it's Dr. Athene Strix! You wonder, 'How is she swimming underwater?!' No time to ponder, however, as Dr. Strix approaches with a riddle.");
         //Reads welcome message
     }
 

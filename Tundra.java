@@ -14,7 +14,7 @@ public class Tundra extends Biome {
     }
 
     public void welcome() {
-        System.out.println("Tundra Welcome!");
+        System.out.println("You walk out into the snowy expanse. The frigid air whips, blowing powdery flakes against your face. But wait...through the thick snowfall, you see a figure flying towards you...it's Dr. Strix! You put your arm out and she lands, perched, and delivers a riddle:");
         //Reads welcome message
     }
 
