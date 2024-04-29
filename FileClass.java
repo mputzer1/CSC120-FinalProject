@@ -11,15 +11,19 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner; // Import the Scanner class to read text files
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Multimap;
+
 import java.io.BufferedWriter; // Import this class to write to a file
 
 public class FileClass {
-  private Map<String, Integer> scoreMap;
+  private Multimap<String, Integer> scoreMap;
   private ArrayList<Integer> scoreList;
   private LinkedHashMap<String, Integer> sortedScoreMap;
 
   public FileClass() {
-    this.scoreMap = new HashMap<>();
+    this.scoreMap = ArrayListMultimap.create();
     this.scoreList = new ArrayList<>();
     this.sortedScoreMap = new LinkedHashMap<>();
   }
@@ -67,31 +71,28 @@ public class FileClass {
     }
   }
 
-  public void sortedFile(String fileName) {
+  public void sortedFile() {
     try {
-      Path nameFile = Path.of(fileName);
+      Path nameFile = Path.of("Scoreboard.txt");
       String stringFile = Files.readString(nameFile);
-      System.out.println(stringFile);
       String[] splitLine = stringFile.split("\n");
       for (int i=0; i<splitLine.length; i++) {
         String splitLineString = splitLine[i];
         String[] keyValue = splitLineString.split(":");
         this.scoreMap.put(keyValue[0], Integer.valueOf(keyValue[1]));
       }
-      System.err.println(scoreMap);
 
-      for(Map.Entry<String, Integer> entry : scoreMap.entrySet()) {
+      for(Map.Entry<String, Integer> entry : scoreMap.entries()) {
         scoreList.add(entry.getValue());
       }
-      Collections.sort(scoreList);
+      Collections.sort(scoreList, Collections.reverseOrder());
       for (int num : scoreList) {
-        for (Map.Entry<String,Integer> entry : scoreMap.entrySet()) {
-          if (entry.getValue().equals(num)) {
-            sortedScoreMap.put(entry.getKey(), num);
+        for (Map.Entry<String,Integer> entry : scoreMap.entries()) {
+          if (entry.getValue().equals(num) && !sortedScoreMap.containsKey(entry.getKey())) {
+            sortedScoreMap.put(entry.getKey(), num); 
           }
         }
       }
-      System.out.println(sortedScoreMap);
       sortedFileWriter();
     } catch (IOException e) {
       System.out.println(e); // print error message
@@ -102,7 +103,7 @@ public class FileClass {
 
   public static void main(String[] args) {
     FileClass file = new FileClass();
-    file.sortedFile("Scoreboard.txt"); //How to make sure sorted with biggest numbers on top, how to preserve highest score for same name?
+    file.sortedFile(); 
   }
 }
 
@@ -114,3 +115,4 @@ public class FileClass {
 // https://stackoverflow.com/questions/10514473/how-to-convert-a-string-to-a-hashmap
 // https://www.digitalocean.com/community/tutorials/sort-hashmap-by-value-java ---) taught me how to sort hashmap
 // https://www.geeksforgeeks.org/write-hashmap-to-a-text-file-in-java/ --) taught me how to write to file
+// https://www.geeksforgeeks.org/how-to-sort-an-arraylist-in-descending-order-in-java/ ---) taught reverse order

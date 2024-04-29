@@ -1,2 +1,2 @@
-Maura:10
-John:40
+Steve:80
+Maura:50
