@@ -5,13 +5,13 @@ import com.google.common.graph.ValueGraphBuilder;
 /**
  * Class for a map of the biomes
  */
-public class BiomeConnections {
+public class BiomeMap {
   private ImmutableValueGraph<String, String> Graph;
 
   /**
    * Creates a graph that maps all the biomes and their named connections
    */
-  public BiomeConnections() {
+  public BiomeMap() {
     this.Graph = ValueGraphBuilder.directed()
     .<String, String>immutable()
     .putEdgeValue("rainforest", "aquatic", "east")

@@ -1,7 +1,2 @@
-maura : -1
-day : -1
-maura : 4
-mo : 0
-mo : 2
-mjklj : 5
-maura : 1
+Maura:10
+John:24

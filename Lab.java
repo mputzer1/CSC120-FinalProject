@@ -14,9 +14,10 @@ public class Lab {
         return this.inventory;
     }
 
-    public void resetInventory() {
+    public String resetInventory() {
         inventory.clear();
         nClearInventory += 1;
+        return "lab";
     }
 
     public void checkInventory(Scanner userInput) {
@@ -52,7 +53,8 @@ public class Lab {
         if (userResponse.equals("yes")) {
             int score = inventory.size() - nClearInventory;
             System.out.println("\nYou found " + inventory.size()+ " animals. Your inventory was eaten " + nClearInventory + " time(s). Your final score is " + score + ".");
-            fileClass.fileWriter("Scoreboard.txt", username + " : " + score);
+            
+            fileClass.fileWriter(username + ":" + score);
             System.out.println("\n***LEADERBOARD***");
             fileClass.fileReader("Scoreboard.txt");
             return stillPlaying = false;

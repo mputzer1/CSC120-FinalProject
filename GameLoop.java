@@ -16,9 +16,9 @@ public class GameLoop { //Maybe have a class w/ help commands?
     public static void main(String[] args) {
         
         //Attributes (organize somehow)
-        BiomeConnections biomeConnections = new BiomeConnections();
+        BiomeMap biomeMap = new BiomeMap();
         FileClass fileClass = new FileClass();
-        ImmutableValueGraph<String, String> Graph = biomeConnections.getGraph();
+        ImmutableValueGraph<String, String> Graph = biomeMap.getGraph();
         String userLocation = "lab";
         ArrayList<String> targetArrayList = new ArrayList<>();
         ArrayList<String> sourceArrayList = new ArrayList<>(); //Consider consolidating these arraylists into hashtable (dictionary)
@@ -74,28 +74,27 @@ public class GameLoop { //Maybe have a class w/ help commands?
                     System.out.println("* " + Graph.edgeValueOrDefault(source, target, "None"));
                 }
 
-                //Choose a path
-                System.out.println("\nChoose a path:");
+            //Choose a path
+            System.out.println("\nChoose a path:");
+            userResponse = userInput.nextLine().toLowerCase();
+            while (!edgeArrayList.contains(userResponse)) {
+                System.out.println("Invalid answer. Type new response."); //Class for help commands/inventory check?
                 userResponse = userInput.nextLine().toLowerCase();
-                while (!edgeArrayList.contains(userResponse)) {
-                  System.out.println("Invalid answer. Type new response."); //Class for help commands/inventory check?
-                  userResponse = userInput.nextLine().toLowerCase();
-                }
-                for (int i=0; i < sourceArrayList.size(); i++) {
-                  String source = sourceArrayList.get(i);
-                  String target = targetArrayList.get(i);
-                  String nEdges = Graph.edgeValueOrDefault(source, target, "None");
-                  if (nEdges.equals(userResponse)) {
+            }
+            for (int i=0; i < sourceArrayList.size(); i++) {
+                String source = sourceArrayList.get(i);
+                String target = targetArrayList.get(i);
+                String nEdges = Graph.edgeValueOrDefault(source, target, "None");
+                if (nEdges.equals(userResponse)) {
                     System.out.println("\nWelcome to the " + target + " biome!");
                     userLocation = target;
                     targetArrayList.clear();
                     sourceArrayList.clear();
                     edgeArrayList.clear();
-                  }
                 }
+            }
 
             //Series of if statements to check user location, ask riddles, and update inventory
-
             for (int i=0; i < biomes.size(); i++) {
                 String stringBiome = biomes.get(i).toString();
                 if (userLocation.equals(stringBiome)) {
@@ -104,14 +103,12 @@ public class GameLoop { //Maybe have a class w/ help commands?
                     if (!inventory.contains(animal)) {
                         animal = classBiome.animalRiddle(userInput);
                         if (animal == null) {
-                            userLocation = "lab";
-                            lab.resetInventory();
+                            userLocation = lab.resetInventory();
                         } else {
                             inventory.add(animal);
                             FloraFauna plant = classBiome.plantRiddle(userInput);
                             if (plant == null) {
-                                userLocation = "lab";
-                                lab.resetInventory();
+                                userLocation = lab.resetInventory();
                             } else {
                                 inventory.add(plant);
                             }
@@ -132,7 +129,5 @@ public class GameLoop { //Maybe have a class w/ help commands?
 
         // Tidy up
         userInput.close();
-
     }
-
 }
