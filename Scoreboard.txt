@@ -1,2 +1,10 @@
-Steve:80
-Maura:50
+sophia:4
+mo:4
+Bill:3
+Joe:2
+df:2
+sd:2
+Martha:1
+Alex:0
+maura:-1
+Steve:-2

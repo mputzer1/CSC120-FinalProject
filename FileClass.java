@@ -6,13 +6,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner; // Import the Scanner class to read text files
 
 import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Multimap;
 
 import java.io.BufferedWriter; // Import this class to write to a file
@@ -33,9 +31,18 @@ public class FileClass {
       File myFile = new File(fileName);
       Scanner fileReader = new Scanner(myFile); // <- Same kind of object we used to read from the command line! But instead of System.in, we're reading from the file
       // Loop until we run out of lines
-      while (fileReader.hasNextLine()) {
-        String data = fileReader.nextLine();
-        System.out.println(data);
+      if (fileName.equals("Scoreboard.txt")) {
+        int nLine = 1;
+        while (nLine <= 5) {
+          String data = fileReader.nextLine();
+          System.out.println(data);
+          nLine ++;
+        }
+      } else {
+        while (fileReader.hasNextLine()) {
+          String data = fileReader.nextLine();
+          System.out.println(data);
+        }
       }
 
       // Tidy up
@@ -64,12 +71,13 @@ public class FileClass {
   public void fileWriter(String message) {
     try {
       BufferedWriter writer = new BufferedWriter(new FileWriter("Scoreboard.txt", true)); 
-      writer.write("\n"+ message);
+      writer.write(message);
       writer.close();
     } catch (IOException e) {
       System.out.println(e); // print error message
     }
   }
+
 
   public void sortedFile() {
     try {
@@ -82,14 +90,14 @@ public class FileClass {
         this.scoreMap.put(keyValue[0], Integer.valueOf(keyValue[1]));
       }
 
-      for(Map.Entry<String, Integer> entry : scoreMap.entries()) {
-        scoreList.add(entry.getValue());
+      for(Map.Entry<String, Integer> entry : this.scoreMap.entries()) {
+        this.scoreList.add(entry.getValue());
       }
-      Collections.sort(scoreList, Collections.reverseOrder());
-      for (int num : scoreList) {
-        for (Map.Entry<String,Integer> entry : scoreMap.entries()) {
-          if (entry.getValue().equals(num) && !sortedScoreMap.containsKey(entry.getKey())) {
-            sortedScoreMap.put(entry.getKey(), num); 
+      Collections.sort(this.scoreList, Collections.reverseOrder());
+      for (int num : this.scoreList) {
+        for (Map.Entry<String,Integer> entry : this.scoreMap.entries()) {
+          if (entry.getValue().equals(num) && !this.sortedScoreMap.containsKey(entry.getKey())) {
+            this.sortedScoreMap.put(entry.getKey(), num); 
           }
         }
       }
@@ -116,3 +124,4 @@ public class FileClass {
 // https://www.digitalocean.com/community/tutorials/sort-hashmap-by-value-java ---) taught me how to sort hashmap
 // https://www.geeksforgeeks.org/write-hashmap-to-a-text-file-in-java/ --) taught me how to write to file
 // https://www.geeksforgeeks.org/how-to-sort-an-arraylist-in-descending-order-in-java/ ---) taught reverse order
+// https://www.coderanch.com/t/408361/java/print-lines-file --) prints first 5 lines

@@ -53,8 +53,8 @@ public class Lab {
         if (userResponse.equals("yes")) {
             int score = inventory.size() - nClearInventory;
             System.out.println("\nYou found " + inventory.size()+ " animals. Your inventory was eaten " + nClearInventory + " time(s). Your final score is " + score + ".");
-            
             fileClass.fileWriter(username + ":" + score);
+            fileClass.sortedFile();
             System.out.println("\n***LEADERBOARD***");
             fileClass.fileReader("Scoreboard.txt");
             return stillPlaying = false;
