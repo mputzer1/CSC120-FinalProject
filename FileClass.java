@@ -78,6 +78,8 @@ public class FileClass {
         String[] keyValue = splitLineString.split(":");
         this.scoreMap.put(keyValue[0], Integer.valueOf(keyValue[1]));
       }
+      System.err.println(scoreMap);
+
       for(Map.Entry<String, Integer> entry : scoreMap.entrySet()) {
         scoreList.add(entry.getValue());
       }
@@ -100,7 +102,7 @@ public class FileClass {
 
   public static void main(String[] args) {
     FileClass file = new FileClass();
-    file.sortedFile("Scoreboard.txt");
+    file.sortedFile("Scoreboard.txt"); //How to make sure sorted with biggest numbers on top, how to preserve highest score for same name?
   }
 }
 
