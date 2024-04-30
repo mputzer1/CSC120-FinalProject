@@ -49,6 +49,10 @@ public class GameLoop { //Maybe have a class w/ help commands?
         fileClass.fileReader("Introduction.txt");
         System.out.println("\nEnter your username:");
         String username = userInput.nextLine().toLowerCase(); //Check for invalid and store in file possibly
+        while (username.length() > 10 || username.length() < 1) {
+            System.out.println("Your username is too long or short. Type another.");
+            username = userInput.nextLine().toLowerCase();
+        }
 
         // The do...while structure means we execute the body of the loop once before checking the stopping condition
         do {
