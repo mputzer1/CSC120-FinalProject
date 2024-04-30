@@ -6,3 +6,15 @@ Note:  It's a good idea to also make this list available inside the game, in res
 # SPOILER ALERT
 
 If your game includes challenges that must be overcome to win, also list them below.
+
+Possible user input:
+- Riddle answers:
+    - Rainforest animal: Poison dart frog (Source grammarly)
+    - Rainforest plant: cacao (Source grammarly)
+    - Desert animal: camel (Source grammarly)
+    - Desert plant: cactus (Source grammarly)
+    - Aquatic animal: dolphin
+    - Aquatic plant: sea anemone
+    - Tundra animal: arctic fox
+    - Tundra plant: fern
+
