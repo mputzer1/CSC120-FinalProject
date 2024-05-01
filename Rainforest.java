@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Rainforest extends Biome {
     private FloraFauna poison_dart_frog; 
     private FloraFauna cacao;
+    private FloraFauna croczilla;
 
     /**
      * Constructor for rainforest class with information about FloraFauna
@@ -13,6 +14,7 @@ public class Rainforest extends Biome {
     public Rainforest() {
         this.poison_dart_frog = new FloraFauna("poison dart frog", 3, "Theo"); 
         this.cacao = new FloraFauna("cacao", 6, "Barbara");
+        this.croczilla = new FloraFauna("croczilla", 10, "croco");
     }
 
     /**
@@ -59,6 +61,20 @@ public class Rainforest extends Biome {
 
     public String toString() {
         return "rainforest";
+    }
+
+    public FloraFauna secretLocation(Scanner s) {
+        System.out.println("\nYou have entered the forest canopy. If you can answer the following bonus question about this location, you will be able to capture the croczilla and end its rein of terror!");
+        System.out.println("\nDr. Athene Strix: what percentage of sunlight does the rainforest canopy intercept? *No percent symbol needed in your answer.");
+        String userResponse = "";
+        userResponse = s.nextLine().toLowerCase();
+        if (userResponse.equals("95")) {
+            System.out.println("You are correct! You have obtained the elusive croczilla and are one step closer to defeating Professor Fossileus Fueleus!");
+            return this.croczilla;
+        } else {
+            System.out.println("You answered incorrectly, but escaped the croczilla by staying in the trees. You have retained your inventory!");
+            return null;
+        }
     }
 
 }

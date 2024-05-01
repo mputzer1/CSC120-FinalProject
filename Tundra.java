@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Tundra extends Biome {
     private FloraFauna arctic_fox;
     private FloraFauna fern;
+    private FloraFauna yeti;
 
     /**
      * Constructor for tundra class with information about FloraFauna
@@ -13,6 +14,7 @@ public class Tundra extends Biome {
     public Tundra() {
         this.arctic_fox = new FloraFauna("arctic fox", 6, "Gary"); 
         this.fern = new FloraFauna("fern", 5, "Finn");
+        this.yeti = new FloraFauna("yeti", 4, "Joe");
     }
 
     /**
@@ -61,4 +63,19 @@ public class Tundra extends Biome {
     public String toString() {
         return "tundra";
     }
+
+    public FloraFauna secretLocation(Scanner s) {
+        System.out.println("\nYou have reached the top of the tundra mountain. If you can answer the following bonus question about this location, you will be able to capture the yeti and end its rein of terror!");
+        System.out.println("\nDr. Athene Strix: The sun shines up to BLANK hours per day in the tundra summer growing season?");
+        String userResponse = "";
+        userResponse = s.nextLine().toLowerCase();
+        if (userResponse.equals("24")) {
+            System.out.println("You are correct! You have obtained the elusive yeti and are one step closer to defeating Professor Fossileus Fueleus!");
+            return this.yeti;
+        } else {
+            System.out.println("You answered incorrectly, but ran down the mountain before the yeti could see you and eat your inventory!");
+            return null;
+        }
+    }
+
 }

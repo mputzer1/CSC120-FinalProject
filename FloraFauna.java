@@ -16,8 +16,4 @@ public class FloraFauna {
     public String toString() {
         return "* This creature is a " + this.species + " of age " + this.age + " named "+ this.name +".";
     }
-
-    public String speak() {
-        return "Heyyyyyy, help me out!";
-    }
 }

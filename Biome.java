@@ -7,6 +7,7 @@ public class Biome {
     private FileClass FileReader;
     private FloraFauna animal;
     private FloraFauna plant;
+    private FloraFauna monster;
 
     /**
      * Constructor for biome class
@@ -15,6 +16,7 @@ public class Biome {
         this.FileReader = new FileClass();
         this.animal = new FloraFauna(null, null, null);
         this.plant = new FloraFauna(null, null, null);
+        this.monster = new FloraFauna(null, null, null);
     }
 
     /**
@@ -79,6 +81,11 @@ public class Biome {
 
     public String toString() {
         return "This is the default biome toString";
+    }
+
+    public FloraFauna secretLocation(Scanner s) {
+        System.out.println("You've entered the secret spot.");
+        return this.monster;
     }
 }
 

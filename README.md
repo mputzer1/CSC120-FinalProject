@@ -4,7 +4,7 @@
  - Your final codebase ---) check rubric and add comments
  - Your revised annotated architecture diagram ---) do this together
  - Design justification (including a brief discussion of at least one alternative you considered) ---) do this
- - A map of your game's layout (if applicable) ---) Do this together
+ - A map of your game's layout (if applicable) 
  - `cheatsheet.md` ---) do this together
  - Completed `rubric.md`
   

@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Desert extends Biome {
     private FloraFauna camel;
     private FloraFauna cactus;
+    private FloraFauna sharknado;
 
     /**
      * Constructor for desert class with information about FloraFauna
@@ -13,6 +14,7 @@ public class Desert extends Biome {
     public Desert() {
         this.camel = new FloraFauna("camel", 2, "Tom");
         this.cactus = new FloraFauna("cactus", 3, "Janice");
+        this.sharknado = new FloraFauna("sharknado", 20, "Sharky");
     }
 
     /**
@@ -60,6 +62,20 @@ public class Desert extends Biome {
 
     public String toString() {
         return "desert";
+    }
+
+    public FloraFauna secretLocation(Scanner s) {
+        System.out.println("\nYou have reached the oasis. If you can answer the following bonus question about this location, you will be able to capture the sharknado and end its rein of terror!");
+        System.out.println("\nDr. Athene Strix: Deserts cover what percentage of Earth's land area? *No percent symbol needed in your answer.");
+        String userResponse = "";
+        userResponse = s.nextLine().toLowerCase();
+        if (userResponse.equals("20")) {
+            System.out.println("You are correct! You have obtained the elusive sharknado and are one step closer to defeating Professor Fossileus Fueleus!");
+            return this.sharknado;
+        } else {
+            System.out.println("You answered incorrectly, but hid in a sand cave before the sharknado could eat your inventory!");
+            return null;
+        }
     }
 
 }

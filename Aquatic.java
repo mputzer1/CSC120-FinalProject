@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Aquatic extends Biome {
     private FloraFauna dolphin;
     private FloraFauna sea_anemone;
+    private FloraFauna kraken;
 
     /**
      * Constructor for aquatic class with information about FloraFauna
@@ -13,6 +14,7 @@ public class Aquatic extends Biome {
     public Aquatic() {
         this.dolphin = new FloraFauna("dolphin", 4, "Dorothy"); 
         this.sea_anemone = new FloraFauna("sea anemone", 5, "Flounder");
+        this.kraken = new FloraFauna("kraken", 2, "Sam");
     }
 
     /**
@@ -59,5 +61,19 @@ public class Aquatic extends Biome {
 
     public String toString() {
         return "aquatic";
+    }
+
+    public FloraFauna secretLocation(Scanner s) {
+        System.out.println("\nYou have reached the coral reef. If you can answer the following bonus question about this location, you will be able to capture the kraken and end its rein of terror!");
+        System.out.println("\nDr. Athene Strix: Coral reefs are home to what percentage of the world's marine life? *No percent symbol needed in your answer.");
+        String userResponse = "";
+        userResponse = s.nextLine().toLowerCase();
+        if (userResponse.equals("25")) {
+            System.out.println("You are correct! You have obtained the elusive kraken and are one step closer to defeating Professor Fossileus Fueleus!");
+            return this.kraken;
+        } else {
+            System.out.println("You answered incorrectly, but reached a passing barge before the kraken could eat your inventory!");
+            return null;
+        }
     }
 }

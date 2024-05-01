@@ -115,6 +115,10 @@ public class GameLoop { //Maybe have a class w/ help commands?
                                 userLocation = lab.resetInventory();
                             } else {
                                 inventory.add(plant);
+                                FloraFauna monster = classBiome.secretLocation(userInput);
+                                if (monster != null) {
+                                    inventory.add(monster);
+                                }
                             }
                         }
                     } else {
