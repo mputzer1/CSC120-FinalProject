@@ -12,7 +12,7 @@ Yes 2 pts: Game has **multiple possible paths / outcomes** (i.e. gameplay depend
 
 Yes 1 pt: Gameplay supports **reversible moves** where reasonable (e.g., if you pick up an object, you should be able to put it back down again later, possibly in a different place; if you go north then you should be able to return to the previous location by going south unless something has blocked your return path).
 
-//Can't put objects down but can go north or south
+//Can't put objects down, since this is not the object of the game, but can go north or south.
 
 Yes 1 pt: Some paths through the game have **restricted access** until the player has completed a task or acquired a specific item (i.e. a key to open a door, etc.).
 
