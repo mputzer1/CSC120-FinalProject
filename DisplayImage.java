@@ -14,10 +14,11 @@ public class DisplayImage extends JFrame {
 
         getContentPane().add(label, BorderLayout.CENTER);
 
+        //set initial image of lab for game start
         ImageIcon initialIcon = new ImageIcon("cs120_lab_image.png");
         label.setIcon(initialIcon);
     }
-
+    //updates image as game progesses
     public void updateImage(String imagePath) {
         ImageIcon icon = new ImageIcon(imagePath);
         label.setIcon(icon);

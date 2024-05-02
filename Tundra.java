@@ -6,13 +6,16 @@ import java.util.Scanner;
 public class Tundra extends Biome {
     private FloraFauna arctic_fox;
     private FloraFauna fern;
+    private String imagePath;
 
     /**
      * Constructor for tundra class with information about FloraFauna
      */
     public Tundra() {
+        super("cs120_lab_image.png");
         this.arctic_fox = new FloraFauna("arctic fox", 6, "Gary"); 
         this.fern = new FloraFauna("fern", 5, "Finn");
+        this.imagePath = "tundra.png";
     }
 
     /**
@@ -29,6 +32,10 @@ public class Tundra extends Biome {
      */
     public FloraFauna getPlant() {
         return this.fern;
+    }
+
+    public String getImagePath() {
+        return imagePath;
     }
     
 

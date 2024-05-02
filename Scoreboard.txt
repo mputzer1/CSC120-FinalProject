@@ -1,3 +1,4 @@
+abby:6
 sophia:4
 mo:4
 Bill:3
@@ -6,5 +7,6 @@ df:2
 sd:2
 Martha:1
 Alex:0
+penelope:-1
 maura:-1
 Steve:-2

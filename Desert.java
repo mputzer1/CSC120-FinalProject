@@ -6,13 +6,18 @@ import java.util.Scanner;
 public class Desert extends Biome {
     private FloraFauna camel;
     private FloraFauna cactus;
+    private String imagePath;
+
 
     /**
      * Constructor for desert class with information about FloraFauna
      */
     public Desert() {
+        super("cs120_lab_image.png");
         this.camel = new FloraFauna("camel", 2, "Tom");
         this.cactus = new FloraFauna("cactus", 3, "Janice");
+        this.imagePath = "desert.png";
+
     }
 
     /**
@@ -30,6 +35,11 @@ public class Desert extends Biome {
     public FloraFauna getPlant() {
         return this.cactus;
     }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
 
 
     /**
