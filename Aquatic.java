@@ -7,14 +7,17 @@ public class Aquatic extends Biome {
     private FloraFauna dolphin;
     private FloraFauna sea_anemone;
     private FloraFauna kraken;
+    private String imagePath;
 
     /**
      * Constructor for aquatic class with information about FloraFauna
      */
     public Aquatic() {
+        super("cs120_lab_image.png");
         this.dolphin = new FloraFauna("dolphin", 4, "Dorothy"); 
         this.sea_anemone = new FloraFauna("sea anemone", 5, "Flounder");
         this.kraken = new FloraFauna("kraken", 2, "Sam");
+        this.imagePath = ("ocean.png");
     }
 
     /**
@@ -31,6 +34,10 @@ public class Aquatic extends Biome {
      */
     public FloraFauna getPlant() {
         return this.sea_anemone;
+    }
+
+    public String getImagePath() {
+        return imagePath;
     }
 
     /**

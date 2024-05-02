@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 /**
  * Biome class which has the file reader attribute.
  */
@@ -8,15 +9,17 @@ public class Biome {
     private FloraFauna animal;
     private FloraFauna plant;
     private FloraFauna monster;
+    private String imagePath;
 
     /**
      * Constructor for biome class
      */
-    public Biome() {
+    public Biome(String imagePath) {
         this.FileReader = new FileClass();
         this.animal = new FloraFauna(null, null, null);
         this.plant = new FloraFauna(null, null, null);
         this.monster = new FloraFauna(null, null, null);
+        this.imagePath = imagePath;
     }
 
     /**
@@ -53,6 +56,10 @@ public class Biome {
      */
     public FloraFauna plantRiddle(Scanner s) {
         return this.plant;
+    }
+
+    public String getImagePath() {
+        return imagePath;
     }
 
     /**

@@ -14,8 +14,8 @@ Possible user input:
     - Rainforest plant: cacao (Source grammarly)
     - Desert animal: camel (Source grammarly)
     - Desert plant: cactus (Source grammarly)
-    - Aquatic animal: dolphin
-    - Aquatic plant: sea anemone
-    - Tundra animal: arctic fox
-    - Tundra plant: fern
+    - Aquatic animal: dolphin (Source: ChatGPT)
+    - Aquatic plant: sea anemone (Source: ChatGPT)
+    - Tundra animal: arctic fox (Source: ChatGPT)
+    - Tundra plant: fern (Source: ChatGPT)
 

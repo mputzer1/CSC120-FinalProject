@@ -58,6 +58,8 @@ public class GameLoop {
 
         // Introduction for the game where user inputs their username
         fileClass.fileReader("Introduction.txt");
+        DisplayImage imageDisplay = new DisplayImage();
+        imageDisplay.setVisible(true);
         System.out.println("\nEnter your username:");
         String username = userInput.nextLine().toLowerCase(); 
         while (username.length() > 10 || username.length() < 1) {
@@ -113,6 +115,8 @@ public class GameLoop {
                 String stringBiome = biomes.get(i).toString();
                 if (userLocation.equals(stringBiome)) {
                     Biome classBiome = biomes.get(i);
+                    String imagePath = classBiome.getImagePath();
+                    imageDisplay.updateImage(imagePath);
                     FloraFauna animal = classBiome.getAnimal();
                     if (!inventory.contains(animal)) {
                         animal = classBiome.animalRiddle(userInput);

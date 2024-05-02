@@ -7,14 +7,17 @@ public class Rainforest extends Biome {
     private FloraFauna poison_dart_frog; 
     private FloraFauna cacao;
     private FloraFauna croczilla;
+    private String imagePath;
 
     /**
      * Constructor for rainforest class with information about FloraFauna
      */
     public Rainforest() {
+        super("cs120_lab_image.png");
         this.poison_dart_frog = new FloraFauna("poison dart frog", 3, "Theo"); 
         this.cacao = new FloraFauna("cacao", 6, "Barbara");
         this.croczilla = new FloraFauna("croczilla", 10, "croco");
+        this.imagePath = "rainforest.png";
     }
 
     /**
@@ -31,6 +34,10 @@ public class Rainforest extends Biome {
      */
     public FloraFauna getPlant() {
         return this.cacao;
+    }
+
+    public String getImagePath() {
+        return imagePath;
     }
 
     /**
