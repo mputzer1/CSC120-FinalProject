@@ -1,6 +1,6 @@
-import java.io.File;  // Import the File class
-import java.io.FileNotFoundException;  // Import this class to handle errors
-import java.io.FileWriter; //Might use these later for leaderboard
+import java.io.File;  
+import java.io.FileNotFoundException;  
+import java.io.FileWriter; 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,29 +8,38 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Scanner; // Import the Scanner class to read text files
+import java.util.Scanner; 
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 
-import java.io.BufferedWriter; // Import this class to write to a file
+import java.io.BufferedWriter; 
 
+/**
+ * Stores the attributes of the file class
+ */
 public class FileClass {
   private Multimap<String, Integer> scoreMap;
   private ArrayList<Integer> scoreList;
   private LinkedHashMap<String, Integer> sortedScoreMap;
 
+  /**
+   * Constructor for the attributes of the file class
+   */
   public FileClass() {
     this.scoreMap = ArrayListMultimap.create();
     this.scoreList = new ArrayList<>();
     this.sortedScoreMap = new LinkedHashMap<>();
   }
 
+  /**
+   * Reads and prints data from files
+   * @param fileName string for file name
+   */
   public void fileReader(String fileName) {
     try {
       File myFile = new File(fileName);
-      Scanner fileReader = new Scanner(myFile); // <- Same kind of object we used to read from the command line! But instead of System.in, we're reading from the file
-      // Loop until we run out of lines
+      Scanner fileReader = new Scanner(myFile); 
       if (fileName.equals("Scoreboard.txt")) {
         int nLine = 1;
         while (nLine <= 5) {
@@ -45,15 +54,18 @@ public class FileClass {
         }
       }
 
-      // Tidy up
       fileReader.close();
       
-    } catch (FileNotFoundException e) { // Sometimes things go wrong; we'll handle that here
+    } catch (FileNotFoundException e) { 
       System.out.println("An error occurred.");
       e.printStackTrace();
     }
   }
 
+
+  /**
+   * Once the scoreboard file is sorted, this method writes the sorted scores to the scoreboard file
+   */
   public void sortedFileWriter() {
     try {
       BufferedWriter writer = new BufferedWriter(new FileWriter("Scoreboard.txt", false)); 
@@ -63,22 +75,28 @@ public class FileClass {
       }
       writer.close();
       } catch (IOException e) {
-      System.out.println(e); // print error message
+      System.out.println(e); 
     }
   }
 
-
-  public void fileWriter(String message) {
+  
+  /**
+   * Writes username and scores to the scoreboard file
+   * @param usernameScore string for the username and score of player
+   */
+  public void fileWriter(String usernameScore) {
     try {
       BufferedWriter writer = new BufferedWriter(new FileWriter("Scoreboard.txt", true)); 
-      writer.write(message);
+      writer.write(usernameScore);
       writer.close();
     } catch (IOException e) {
-      System.out.println(e); // print error message
+      System.out.println(e); 
     }
   }
 
-
+  /**
+   * Converts the scoreboard file to a string, splits it, sorts it, and calls the sortedFileWriter to add sorted scores to the scoreboard file
+   */
   public void sortedFile() {
     try {
       Path nameFile = Path.of("Scoreboard.txt");
@@ -103,15 +121,8 @@ public class FileClass {
       }
       sortedFileWriter();
     } catch (IOException e) {
-      System.out.println(e); // print error message
+      System.out.println(e); 
     }
-}
-
-
-
-  public static void main(String[] args) {
-    FileClass file = new FileClass();
-    file.sortedFile(); 
   }
 }
 

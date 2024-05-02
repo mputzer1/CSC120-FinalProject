@@ -8,28 +8,39 @@ import com.google.common.graph.ImmutableValueGraph;
 /**
  * Runs the commands of the game in order until user wins/loses
  */
-public class GameLoop { //Maybe have a class w/ help commands?
+public class GameLoop { 
 
     /**
      * Main method that runs the whole game loop
      */
     public static void main(String[] args) {
         
-        //Attributes (organize somehow)
+        //Accesses the guava biome map
         BiomeMap biomeMap = new BiomeMap();
-        FileClass fileClass = new FileClass();
         ImmutableValueGraph<String, String> Graph = biomeMap.getGraph();
-        String userLocation = "lab";
+        
+        //Allows files to be read
+        FileClass fileClass = new FileClass();
+        
+        //Helps for storage of possible locations player can go
         ArrayList<String> targetArrayList = new ArrayList<>();
-        ArrayList<String> sourceArrayList = new ArrayList<>(); //Consider consolidating these arraylists into hashtable (dictionary)
+        ArrayList<String> sourceArrayList = new ArrayList<>(); 
         ArrayList<String> edgeArrayList = new ArrayList<>();
+        
+        //Creates the biomes the player can visit
         Rainforest rainforest = new Rainforest();
         Desert desert = new Desert();
         Aquatic aquatic = new Aquatic();
         Tundra tundra = new Tundra();
+        
+        //Creates the lab with the player's inventory
         Lab lab = new Lab();
         ArrayList<FloraFauna> inventory = lab.getInventory();
 
+        //Keeps track of player location
+        String userLocation = "lab";
+
+        //Builds the ArrayList that is looped for the if statement that calls riddles and checks player location
         ArrayList<Biome> biomes = new ArrayList<>();
         biomes.add(rainforest);
         biomes.add(desert);
@@ -45,19 +56,18 @@ public class GameLoop { //Maybe have a class w/ help commands?
         // Storage for user's responses
         String userResponse = "";
 
-        // This could be replaced with a more interesting opening
+        // Introduction for the game where user inputs their username
         fileClass.fileReader("Introduction.txt");
         System.out.println("\nEnter your username:");
-        String username = userInput.nextLine().toLowerCase(); //Check for invalid and store in file possibly
+        String username = userInput.nextLine().toLowerCase(); 
         while (username.length() > 10 || username.length() < 1) {
             System.out.println("Your username is too long or short. Type another.");
             username = userInput.nextLine().toLowerCase();
         }
 
-        // The do...while structure means we execute the body of the loop once before checking the stopping condition
         do {
 
-            //Checks user location and shows paths available (Is there an easier way to do this?)
+            //Checks user location and shows paths available
             System.out.println("\nThe following paths you may take are listed below:");
             Iterator<EndpointPair<String>> GraphIterator = Graph.incidentEdges(userLocation).iterator();
             while (GraphIterator.hasNext()) {
@@ -78,7 +88,7 @@ public class GameLoop { //Maybe have a class w/ help commands?
                     System.out.println("* " + Graph.edgeValueOrDefault(source, target, "None"));
                 }
 
-            //Choose a path
+            //Allows player to choose a path
             System.out.println("\nChoose a path:");
             userResponse = userInput.nextLine().toLowerCase();
             while (!edgeArrayList.contains(userResponse)) {
@@ -135,7 +145,6 @@ public class GameLoop { //Maybe have a class w/ help commands?
 
         } while (stillPlaying);
 
-        // Tidy up
         userInput.close();
     }
 }

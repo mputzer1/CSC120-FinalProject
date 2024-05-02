@@ -36,7 +36,7 @@ public class Tundra extends Biome {
 
     /**
      * Calls riddle method and checks if true or false is returned to determine whether to return fox or null.
-     * @param Scanner s from the game loop class
+     * @param s Scanner from the game loop class
      * @return fox object or null
      */
     public FloraFauna animalRiddle(Scanner s) {
@@ -49,7 +49,7 @@ public class Tundra extends Biome {
 
     /**
      * Calls riddle method and checks if true or false is returned to determine whether to return fern or null.
-     * @param Scanner s from the game loop class
+     * @param s Scanner from the game loop class
      * @return fern object or null
      */
     public FloraFauna plantRiddle(Scanner s) {
@@ -60,12 +60,22 @@ public class Tundra extends Biome {
         }
     }
 
+    /**
+     * Converts name for tundra class to a string
+     * @return "tundra" string
+     */
     public String toString() {
         return "tundra";
     }
 
+
+    /**
+     * Tells user they have entered the ice cave and quizzes them before potentially giving them the monster object
+     * @param s Scanner from the game loop class
+     * @return yeti object or null
+     */
     public FloraFauna secretLocation(Scanner s) {
-        System.out.println("\nYou have reached the top of the tundra mountain. If you can answer the following bonus question about this location, you will be able to capture the yeti and end its rein of terror!");
+        System.out.println("\nYou have reached the ice cave. If you can answer the following bonus question about the tundra, you will be able to capture the yeti and end its rein of terror!");
         System.out.println("\nDr. Athene Strix: The sun shines up to BLANK hours per day in the tundra summer growing season?");
         String userResponse = "";
         userResponse = s.nextLine().toLowerCase();

@@ -20,8 +20,8 @@ public class Biome {
     }
 
     /**
-     * Getter for plant
-     * @return the plant object
+     * Getter for animal
+     * @return the animal object
      */
     public FloraFauna getAnimal() {
         return this.animal;
@@ -36,53 +36,71 @@ public class Biome {
     }
 
 
+    /**
+     * Simple animal riddle method created so game loop recognizes that biome class contains animal riddle.
+     * @param s Scanner for user answer
+     * @return the animal associated with the riddle
+     */
     public FloraFauna animalRiddle(Scanner s) {
         return this.animal;
+
     }
 
-
+    /**
+     * Simple plant riddle method created so game loop recognizes that biome class contains plant riddle.
+     * @param s Scanner for user answer
+     * @return the plant associated with the riddle
+     */
     public FloraFauna plantRiddle(Scanner s) {
         return this.plant;
     }
 
     /**
      * Allows riddles for child classes to be read and answered.
-     * @param Scanner s that reads user response
-     * @param String FloraFauna that is riddle subject
-     * @param String Monster that is attacking user
-     * @param String filename that is associated with riddle subject
+     * @param s Scanner that reads user response
+     * @param floraFauna String that is riddle subject
+     * @param monster String that is attacking user
+     * @param fileName string that is associated with riddle subject
      * @return boolean (whether riddle was answered correctly)
      */
-    public boolean riddle(Scanner s, String FloraFauna, String Monster, String filename) {
+    public boolean riddle(Scanner s, String floraFauna, String monster, String fileName) {
         System.out.println("");
-        this.FileReader.fileReader(filename);
+        this.FileReader.fileReader(fileName);
         String userResponse = "";
         int incorrectCounter = 0;
         while (true) {
             System.out.println("\nEnter your answer:");
             userResponse = s.nextLine().toLowerCase();
-            if (!userResponse.equals(FloraFauna)) {
+            if (!userResponse.equals(floraFauna)) {
                 System.out.println("\nYou've answered incorrectly!");
                 incorrectCounter += 1;
                 if (incorrectCounter < 3) {
-                    System.out.println("The " + Monster + " is " + (3 - incorrectCounter) + " feet away.");
+                    System.out.println("The " + monster + " is " + (3 - incorrectCounter) + " feet away.");
                 }
                 if (incorrectCounter == 3) {
                     System.out.println("Your inventory has been eaten!");
                     return false;
                 }
             }
-            if (userResponse.equals(FloraFauna)) {
-                System.out.println("\nYou've answered correctly! The " + FloraFauna + " has been added to your inventory.");
+            if (userResponse.equals(floraFauna)) {
+                System.out.println("\nYou've answered correctly! The " + floraFauna + " has been added to your inventory.");
                 return true;
             }
         }
     }
 
+    /** 
+     * Method converts biome class to a string
+    */
     public String toString() {
-        return "This is the default biome toString";
+        return "biome";
     }
 
+    /**
+     * Basic secretLocation method created so the game loop recognizes that this method is defined for the type biome in the generic if statement loop
+     * @param s Scanner for user answer
+     * @return the monster 
+     */
     public FloraFauna secretLocation(Scanner s) {
         System.out.println("You've entered the secret spot.");
         return this.monster;

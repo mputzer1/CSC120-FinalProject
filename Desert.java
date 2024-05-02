@@ -36,7 +36,7 @@ public class Desert extends Biome {
 
     /**
      * Calls riddle method and checks if true or false is returned to determine whether to return camel or null.
-     * @param Scanner s from the game loop class
+     * @param s Scanner from the game loop class
      * @return camel object or null
      */
     public FloraFauna animalRiddle(Scanner s) { 
@@ -49,7 +49,7 @@ public class Desert extends Biome {
 
     /**
      * Calls riddle method and checks if true or false is returned to determine whether to return cactus or null.
-     * @param Scanner s from the game loop class
+     * @param s Scanner from the game loop class
      * @return cactus object or null
      */
     public FloraFauna plantRiddle(Scanner s) {
@@ -60,10 +60,19 @@ public class Desert extends Biome {
         }
     }
 
+    /**
+     * Converts name for desert class to a string
+     * @return "desert" string
+     */
     public String toString() {
         return "desert";
     }
 
+    /**
+     * Tells user they have entered the oasis and quizzes them before potentially giving them the monster object
+     * @param s Scanner from the game loop class
+     * @return sharknado object or null
+     */
     public FloraFauna secretLocation(Scanner s) {
         System.out.println("\nYou have reached the oasis. If you can answer the following bonus question about this location, you will be able to capture the sharknado and end its rein of terror!");
         System.out.println("\nDr. Athene Strix: Deserts cover what percentage of Earth's land area? *No percent symbol needed in your answer.");
