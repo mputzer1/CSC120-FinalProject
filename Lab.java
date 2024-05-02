@@ -16,6 +16,10 @@ public class Lab {
         this.nClearInventory = 0;
     }
 
+    public static String getImagePath() {
+        return "lab.png";
+    }
+
     /**
      * Getter for the inventory
      * @return inventory with the creatures
@@ -42,7 +46,7 @@ public class Lab {
         System.out.println("\nYou are back to the lab. Would you like to check your inventory?");
         String userResponse = userInput.nextLine().toLowerCase();
         while (!userResponse.equals("yes") && !userResponse.equals("no")) {
-            System.out.println("\nI don't recognize " + "'" + userResponse +"'");
+            System.out.println("I don't recognize that answer");
             userResponse = userInput.nextLine().toLowerCase();
         }
         if (userResponse.equals("yes")) {

@@ -47,6 +47,10 @@ public class GameLoop {
         biomes.add(tundra);
         biomes.add(aquatic);
 
+        //Sets up images
+        DisplayImage imageDisplay = new DisplayImage();
+        imageDisplay.setVisible(true);
+
         // This is a "flag" to let us know when the loop should end
         boolean stillPlaying = true;
 
@@ -57,9 +61,9 @@ public class GameLoop {
         String userResponse = "";
 
         // Introduction for the game where user inputs their username
+        String labImage = Lab.getImagePath();
+        imageDisplay.updateImage(labImage);
         fileClass.fileReader("Introduction.txt");
-        DisplayImage imageDisplay = new DisplayImage();
-        imageDisplay.setVisible(true);
         System.out.println("\nEnter your username:");
         String username = userInput.nextLine().toLowerCase(); 
         while (username.length() > 10 || username.length() < 1) {
@@ -143,6 +147,7 @@ public class GameLoop {
 
            // Allows user to check and review inventory in the lab 
             if (userLocation.equals("lab")) {
+                imageDisplay.updateImage(labImage);
                 lab.checkInventory(userInput);
                 stillPlaying = lab.submitInventory(userInput, username, fileClass, stillPlaying);
             }

@@ -7,17 +7,15 @@ public class Tundra extends Biome {
     private FloraFauna arctic_fox;
     private FloraFauna fern;
     private FloraFauna yeti;
-    private String imagePath;
 
     /**
      * Constructor for tundra class with information about FloraFauna
      */
     public Tundra() {
-        super("cs120_lab_image.png");
+        super("tundra.png");
         this.arctic_fox = new FloraFauna("arctic fox", 6, "Gary"); 
         this.fern = new FloraFauna("fern", 5, "Finn");
         this.yeti = new FloraFauna("yeti", 4, "Joe");
-        this.imagePath = "tundra.png";
     }
 
     /**
@@ -36,8 +34,9 @@ public class Tundra extends Biome {
         return this.fern;
     }
 
+
     public String getImagePath() {
-        return imagePath;
+        return super.getImagePath();
     }
     
 
