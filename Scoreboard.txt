@@ -1,4 +1,4 @@
-mo:8
+mo:12
 sophia:4
 Bill:3
 Joe:2
