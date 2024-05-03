@@ -43,13 +43,13 @@ public class Lab {
      * @param userInput scanner for if user would like to check their inventory
      */
     public void checkInventory(Scanner userInput) {
-        System.out.println("\nYou are back to the lab. Would you like to check your inventory?");
+        System.out.println("\nYou are back to the lab. Would you like to check your inventory? (Y/N)");
         String userResponse = userInput.nextLine().toLowerCase();
-        while (!userResponse.equals("yes") && !userResponse.equals("no")) {
+        while (!userResponse.equals("y") && !userResponse.equals("n")) {
             System.out.println("Invalid answer. Type new response.");
             userResponse = userInput.nextLine().toLowerCase();
         }
-        if (userResponse.equals("yes")) {
+        if (userResponse.equals("y")) {
             System.out.println("\n==============");
             System.out.println("YOUR INVENTORY");
             System.out.println("==============");
@@ -72,13 +72,13 @@ public class Lab {
      * @return stillPlaying boolean determines whether game ended or not
      */
     public boolean submitInventory(Scanner userInput, String username, FileClass fileClass, boolean stillPlaying) {
-        System.out.println("\nWould you like to submit your inventory for review? Warning: the game will end.");
+        System.out.println("\nWould you like to submit your inventory for review? (Y/N) Warning: the game will end.");
         String userResponse = userInput.nextLine().toLowerCase();
-        while (!userResponse.equals("yes") && !userResponse.equals("no")) {
+        while (!userResponse.equals("y") && !userResponse.equals("n")) {
             System.out.println("Invalid answer. Type new response.");
             userResponse = userInput.nextLine().toLowerCase();
         }
-        if (userResponse.equals("yes")) {
+        if (userResponse.equals("y")) {
             int score = inventory.size() - nClearInventory;
             System.out.println("\nYou found " + inventory.size()+ " animals/plants. Your inventory was eaten " + nClearInventory + " time(s). Your final score is " + score + ".");
             fileClass.fileWriter(username + ":" + score);

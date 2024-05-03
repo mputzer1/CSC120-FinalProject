@@ -80,7 +80,7 @@ public class Rainforest extends Biome {
      */
     public FloraFauna secretLocation(Scanner s) {
         System.out.println("\nYou have entered the forest canopy. If you can answer the following bonus question about this location, you will be able to capture the croczilla and end its rein of terror!");
-        System.out.println("\nDr. Athene Strix: what percentage of sunlight does the rainforest canopy intercept? *No percent symbol needed in your answer.");
+        System.out.println("\nDr. Athene Strix: What percentage of sunlight does the rainforest canopy intercept? *No percent symbol needed in your answer.");
         String userResponse = "";
         userResponse = s.nextLine().toLowerCase();
         if (userResponse.equals("95")) {
