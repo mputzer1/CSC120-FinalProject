@@ -4,7 +4,7 @@ import java.util.Scanner;
  * The rainforest class that extends the biome and contains the camel and cactus
  */
 public class Rainforest extends Biome {
-    private FloraFauna poison_dart_frog; 
+    private FloraFauna poisonDartFrog; 
     private FloraFauna cacao;
     private FloraFauna croczilla;
 
@@ -13,7 +13,7 @@ public class Rainforest extends Biome {
      */
     public Rainforest() {
         super("rainforest.png");
-        this.poison_dart_frog = new FloraFauna("poison dart frog", 3, "Theo"); 
+        this.poisonDartFrog = new FloraFauna("poison dart frog", 3, "Theo"); 
         this.cacao = new FloraFauna("cacao", 6, "Barbara");
         this.croczilla = new FloraFauna("croczilla", 10, "croco");
     }
@@ -23,7 +23,7 @@ public class Rainforest extends Biome {
      * @return the frog object
      */
     public FloraFauna getAnimal() {
-        return this.poison_dart_frog;
+        return this.poisonDartFrog;
     }
 
     /**
@@ -40,12 +40,12 @@ public class Rainforest extends Biome {
 
     /**
      * Calls riddle method and checks if true or false is returned to determine whether to return poison dart frog or null.
-     * @param s Scanner from the game loop class
+     * @param scanner Scanner from the game loop class
      * @return poison dart frog object or null
      */
-    public FloraFauna animalRiddle(Scanner s) {
-        if (riddle(s, "poison dart frog", "croczilla", "FrogRiddle.txt")) {
-            return this.poison_dart_frog;
+    public FloraFauna animalRiddle(Scanner scanner) {
+        if (riddle(scanner, "poison dart frog", "croczilla", "FrogRiddle.txt")) {
+            return this.poisonDartFrog;
         } else {
             return null;
         }
@@ -53,11 +53,11 @@ public class Rainforest extends Biome {
 
     /**
      * Calls riddle method and checks if true or false is returned to determine whether to return cacao or null.
-     * @param s Scanner from the game loop class
+     * @param scanner Scanner from the game loop class
      * @return cacao object or null
      */
-    public FloraFauna plantRiddle(Scanner s) {
-        if (riddle(s, "cacao", "croczilla", "CacaoRiddle.txt")) {
+    public FloraFauna plantRiddle(Scanner scanner) {
+        if (riddle(scanner, "cacao", "croczilla", "CacaoRiddle.txt")) {
             return this.cacao;
         } else {
             return null;
@@ -75,14 +75,14 @@ public class Rainforest extends Biome {
     
     /**
      * Tells user they have entered the forest canopy and quizzes them before potentially giving them the monster object
-     * @param s Scanner from the game loop class
+     * @param scanner Scanner from the game loop class
      * @return croczilla object or null
      */
-    public FloraFauna secretLocation(Scanner s) {
+    public FloraFauna secretLocation(Scanner scanner) {
         System.out.println("\nYou have entered the forest canopy. If you can answer the following bonus question about this location, you will be able to capture the croczilla and end its rein of terror!");
         System.out.println("\nDr. Athene Strix: What percentage of sunlight does the rainforest canopy intercept? *No percent symbol needed in your answer.");
         String userResponse = "";
-        userResponse = s.nextLine().toLowerCase();
+        userResponse = scanner.nextLine().toLowerCase();
         if (userResponse.equals("95")) {
             System.out.println("You are correct! You have obtained the elusive croczilla and are one step closer to defeating Professor Fossileus Fueleus!");
             return this.croczilla;

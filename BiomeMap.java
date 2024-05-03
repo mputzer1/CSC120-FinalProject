@@ -6,13 +6,13 @@ import com.google.common.graph.ValueGraphBuilder;
  * Class for a map of the biomes
  */
 public class BiomeMap {
-  private ImmutableValueGraph<String, String> Graph;
+  private ImmutableValueGraph<String, String> biomeGraph;
 
   /**
    * Creates a graph that maps all the biomes and their named connections
    */
   public BiomeMap() {
-    this.Graph = ValueGraphBuilder.directed()
+    this.biomeGraph = ValueGraphBuilder.directed()
     .<String, String>immutable()
     .putEdgeValue("rainforest", "aquatic", "east")
     .putEdgeValue("aquatic", "rainforest", "west")
@@ -37,8 +37,8 @@ public class BiomeMap {
    * Getter for the biome map/graph
    * @return the biome graph
    */
-  public ImmutableValueGraph<String, String> getGraph() {
-    return this.Graph;
+  public ImmutableValueGraph<String, String> getBiomeGraph() {
+    return this.biomeGraph;
   }
 
 }

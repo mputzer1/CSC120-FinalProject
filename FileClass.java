@@ -43,14 +43,14 @@ public class FileClass {
       if (fileName.equals("Scoreboard.txt")) {
         int nLine = 1;
         while (nLine <= 5) {
-          String data = fileReader.nextLine();
-          System.out.println(data);
+          String fileContent = fileReader.nextLine();
+          System.out.println(fileContent);
           nLine ++;
         }
       } else {
         while (fileReader.hasNextLine()) {
-          String data = fileReader.nextLine();
-          System.out.println(data);
+          String fileContent = fileReader.nextLine();
+          System.out.println(fileContent);
         }
       }
 

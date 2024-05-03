@@ -5,7 +5,7 @@ import java.util.Scanner;
  * Biome class which has the file reader attribute.
  */
 public class Biome {
-    private FileClass FileReader;
+    private FileClass fileReader;
     private FloraFauna animal;
     private FloraFauna plant;
     private FloraFauna monster;
@@ -15,7 +15,7 @@ public class Biome {
      * Constructor for biome class
      */
     public Biome(String imagePath) {
-        this.FileReader = new FileClass();
+        this.fileReader = new FileClass();
         this.animal = new FloraFauna(null, null, null);
         this.plant = new FloraFauna(null, null, null);
         this.monster = new FloraFauna(null, null, null);
@@ -72,7 +72,7 @@ public class Biome {
      */
     public boolean riddle(Scanner s, String floraFauna, String monster, String fileName) {
         System.out.println("");
-        this.FileReader.fileReader(fileName);
+        this.fileReader.fileReader(fileName);
         String userResponse = "";
         int incorrectCounter = 0;
         while (true) {

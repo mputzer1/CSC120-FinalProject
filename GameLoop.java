@@ -17,7 +17,7 @@ public class GameLoop {
         
         //Accesses the guava biome map
         BiomeMap biomeMap = new BiomeMap();
-        ImmutableValueGraph<String, String> Graph = biomeMap.getGraph();
+        ImmutableValueGraph<String, String> biomeGraph = biomeMap.getBiomeGraph();
         
         //Allows files to be read
         FileClass fileClass = new FileClass();
@@ -75,7 +75,7 @@ public class GameLoop {
 
             //Checks user location and shows paths available
             System.out.println("\nThe following paths you may take are listed below:");
-            Iterator<EndpointPair<String>> GraphIterator = Graph.incidentEdges(userLocation).iterator();
+            Iterator<EndpointPair<String>> GraphIterator = biomeGraph.incidentEdges(userLocation).iterator();
             while (GraphIterator.hasNext()) {
                 EndpointPair<String> edge = GraphIterator.next();
                 String targetNode = edge.target();
@@ -90,8 +90,8 @@ public class GameLoop {
                 for (int i=0; i < sourceArrayList.size(); i++) {
                     String source = sourceArrayList.get(i);
                     String target = targetArrayList.get(i);
-                    edgeArrayList.add(Graph.edgeValueOrDefault(source, target, "None"));
-                    System.out.println("* " + Graph.edgeValueOrDefault(source, target, "None"));
+                    edgeArrayList.add(biomeGraph.edgeValueOrDefault(source, target, "None"));
+                    System.out.println("* " + biomeGraph.edgeValueOrDefault(source, target, "None"));
                 }
 
             //Allows player to choose a path
@@ -104,7 +104,7 @@ public class GameLoop {
             for (int i=0; i < sourceArrayList.size(); i++) {
                 String source = sourceArrayList.get(i);
                 String target = targetArrayList.get(i);
-                String nEdges = Graph.edgeValueOrDefault(source, target, "None");
+                String nEdges = biomeGraph.edgeValueOrDefault(source, target, "None");
                 if (nEdges.equals(userResponse)) {
                     System.out.println("\nWelcome to the " + target + " biome!");
                     userLocation = target;

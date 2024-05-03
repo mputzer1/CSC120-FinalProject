@@ -4,7 +4,7 @@ import java.util.Scanner;
  * The tundra class that extends the biome and contains the arctic fox and fern
  */
 public class Tundra extends Biome {
-    private FloraFauna arctic_fox;
+    private FloraFauna arcticFox;
     private FloraFauna fern;
     private FloraFauna yeti;
 
@@ -13,7 +13,7 @@ public class Tundra extends Biome {
      */
     public Tundra() {
         super("tundra.png");
-        this.arctic_fox = new FloraFauna("arctic fox", 6, "Gary"); 
+        this.arcticFox = new FloraFauna("arctic fox", 6, "Gary"); 
         this.fern = new FloraFauna("fern", 5, "Finn");
         this.yeti = new FloraFauna("yeti", 4, "Joe");
     }
@@ -23,7 +23,7 @@ public class Tundra extends Biome {
      * @return the fox object
      */
     public FloraFauna getAnimal() {
-        return this.arctic_fox;
+        return this.arcticFox;
     }
 
     /**
@@ -42,12 +42,12 @@ public class Tundra extends Biome {
 
     /**
      * Calls riddle method and checks if true or false is returned to determine whether to return fox or null.
-     * @param s Scanner from the game loop class
+     * @param scanner Scanner from the game loop class
      * @return fox object or null
      */
-    public FloraFauna animalRiddle(Scanner s) {
-        if (riddle(s, "arctic fox", "yeti", "FoxRiddle.txt")) {
-            return this.arctic_fox;
+    public FloraFauna animalRiddle(Scanner scanner) {
+        if (riddle(scanner, "arctic fox", "yeti", "FoxRiddle.txt")) {
+            return this.arcticFox;
         } else {
             return null;
         }
@@ -55,11 +55,11 @@ public class Tundra extends Biome {
 
     /**
      * Calls riddle method and checks if true or false is returned to determine whether to return fern or null.
-     * @param s Scanner from the game loop class
+     * @param scanner Scanner from the game loop class
      * @return fern object or null
      */
-    public FloraFauna plantRiddle(Scanner s) {
-        if (riddle(s, "fern", "yeti", "FernRiddle.txt")) {
+    public FloraFauna plantRiddle(Scanner scanner) {
+        if (riddle(scanner, "fern", "yeti", "FernRiddle.txt")) {
             return this.fern;
         } else {
             return null;
@@ -77,14 +77,14 @@ public class Tundra extends Biome {
 
     /**
      * Tells user they have entered the ice cave and quizzes them before potentially giving them the monster object
-     * @param s Scanner from the game loop class
+     * @param scanner Scanner from the game loop class
      * @return yeti object or null
      */
-    public FloraFauna secretLocation(Scanner s) {
+    public FloraFauna secretLocation(Scanner scanner) {
         System.out.println("\nYou have reached the ice cave. If you can answer the following bonus question about the tundra, you will be able to capture the yeti and end its rein of terror!");
         System.out.println("\nDr. Athene Strix: The sun shines up to BLANK hours per day in the tundra summer growing season?");
         String userResponse = "";
-        userResponse = s.nextLine().toLowerCase();
+        userResponse = scanner.nextLine().toLowerCase();
         if (userResponse.equals("24")) {
             System.out.println("You are correct! You have obtained the elusive yeti and are one step closer to defeating Professor Fossileus Fueleus!");
             return this.yeti;
