@@ -155,5 +155,7 @@ public class GameLoop {
         } while (stillPlaying);
 
         userInput.close();
+        System.exit(0);
+
     }
 }

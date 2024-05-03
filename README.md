@@ -2,9 +2,9 @@
 
 ## Deliverables:
  - Your final codebase 
- - Your revised annotated architecture diagram 
+ - Your revised annotated architecture diagram - Done
  - Design justification (including a brief discussion of at least one alternative you considered) 
- - A map of your game's layout (if applicable) 
+ - A map of your game's layout (if applicable) - Done
  - `cheatsheet.md` 
  - Completed `rubric.md`
   
@@ -16,3 +16,12 @@
  - What was the most helpful **piece of feedback** you received while working on your project? Who gave it to you?
  - If you could go back in time and give your past self some **advice** about this project, what hints would you give?
  - _If you worked with a team:_ please comment on how your **team dynamics** influenced your experience working on this project.
+
+
+Sources for File Class
+https://stackoverflow.com/questions/15649567/sorting-a-text-file-in-java
+https://stackoverflow.com/questions/10514473/how-to-convert-a-string-to-a-hashmap
+https://www.digitalocean.com/community/tutorials/sort-hashmap-by-value-java 
+https://www.geeksforgeeks.org/write-hashmap-to-a-text-file-in-java/ 
+https://www.geeksforgeeks.org/how-to-sort-an-arraylist-in-descending-order-in-java/ 
+https://www.coderanch.com/t/408361/java/print-lines-file 

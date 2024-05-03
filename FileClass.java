@@ -125,14 +125,3 @@ public class FileClass {
     }
   }
 }
-
-
-
-
-//Sources
-// https://stackoverflow.com/questions/15649567/sorting-a-text-file-in-java
-// https://stackoverflow.com/questions/10514473/how-to-convert-a-string-to-a-hashmap
-// https://www.digitalocean.com/community/tutorials/sort-hashmap-by-value-java ---) taught me how to sort hashmap
-// https://www.geeksforgeeks.org/write-hashmap-to-a-text-file-in-java/ --) taught me how to write to file
-// https://www.geeksforgeeks.org/how-to-sort-an-arraylist-in-descending-order-in-java/ ---) taught reverse order
-// https://www.coderanch.com/t/408361/java/print-lines-file --) prints first 5 lines

@@ -46,7 +46,7 @@ public class Lab {
         System.out.println("\nYou are back to the lab. Would you like to check your inventory?");
         String userResponse = userInput.nextLine().toLowerCase();
         while (!userResponse.equals("yes") && !userResponse.equals("no")) {
-            System.out.println("I don't recognize that answer");
+            System.out.println("Invalid answer. Type new response.");
             userResponse = userInput.nextLine().toLowerCase();
         }
         if (userResponse.equals("yes")) {
@@ -60,8 +60,6 @@ public class Lab {
                     System.out.println(inventory.get(i));
                 }
             }
-        } else {
-           System.out.println("\nThe game continues!"); 
         }
     }
     
@@ -77,7 +75,7 @@ public class Lab {
         System.out.println("\nWould you like to submit your inventory for review? Warning: the game will end.");
         String userResponse = userInput.nextLine().toLowerCase();
         while (!userResponse.equals("yes") && !userResponse.equals("no")) {
-            System.out.println("\nI don't recognize " + "'" + userResponse +"'");
+            System.out.println("Invalid answer. Type new response.");
             userResponse = userInput.nextLine().toLowerCase();
         }
         if (userResponse.equals("yes")) {
