@@ -1,10 +1,17 @@
 import javax.swing.*;
 import java.awt.*;
 
+
+/**
+ * Display image class attributes
+ */
 public class DisplayImage extends JFrame {
     private JLabel label;
     
 
+    /**
+     * Constructor for display image class
+     */
     public DisplayImage() {
         setTitle("Image Display");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -15,11 +22,14 @@ public class DisplayImage extends JFrame {
         getContentPane().add(label, BorderLayout.CENTER);
 
         //set initial image of lab for game start
-        ImageIcon initialIcon = new ImageIcon("cs120_lab_image.png");
+        ImageIcon initialIcon = new ImageIcon("lab.png");
         label.setIcon(initialIcon);
     }
     
-    //updates image as game progesses
+    /**
+     * Updates image as game progresses
+     * @param imagePath string for image
+     */
     public void updateImage(String imagePath) {
         ImageIcon icon = new ImageIcon(imagePath);
         label.setIcon(icon);
