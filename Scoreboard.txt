@@ -1,0 +1,10 @@
+mo:8
+sophia:4
+Bill:3
+Joe:2
+df:2
+sd:2
+maura:2
+Martha:1
+Alex:0
+Steve:-2
