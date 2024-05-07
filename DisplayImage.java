@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-
+/*
+ * class to implement graphics for lab and biomes
+ */
 public class DisplayImage extends JFrame {
 
     private JLabel label;
@@ -14,11 +16,16 @@ public class DisplayImage extends JFrame {
 
         getContentPane().add(label, BorderLayout.CENTER);
 
-        //set initial image of lab for game start
+        /*
+         * sets initial image for start of game (lab image)
+         */
         ImageIcon initialIcon = new ImageIcon("cs120_lab_image.png");
         label.setIcon(initialIcon);
     }
-    //updates image as game progesses
+    /*
+     * method to update image as game progresses through biomes
+     * @param imagePath 
+     */
     public void updateImage(String imagePath) {
         ImageIcon icon = new ImageIcon(imagePath);
         label.setIcon(icon);

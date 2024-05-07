@@ -1,19 +1,28 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/*
+ * stores inventory for plants and animals
+ */
 public class Lab {
     private ArrayList<FloraFauna> inventory;
     private int nClearInventory;
-
+/*
+ * constructor with new ArrayList for inventory
+ */
     public Lab() {
         this.inventory = new ArrayList<>();
         this.nClearInventory = 0;
     }
-
+/*
+ * getter for inventory
+ * @return inventory
+ */
     public ArrayList<FloraFauna> getInventory() {
         return this.inventory;
     }
-
+/*
+ * clears and resets inventory
+ */
     public String resetInventory() {
         inventory.clear();
         nClearInventory += 1;
