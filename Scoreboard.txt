@@ -1,5 +1,6 @@
 mo:12
 john:12
+maura:12
 sylvia:11
 sophia:4
 s:3
@@ -7,7 +8,6 @@ Bill:3
 Joe:2
 df:2
 sd:2
-maura:2
 Martha:1
 Alex:0
 Steve:-2
